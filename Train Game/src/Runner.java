@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.*;
 
 public class Runner {
 
@@ -37,6 +38,63 @@ public class Runner {
 	public static void main(String[] args) {
 		//make game here
 
+	}
+	
+	public static void display(int player) {
+		
+		//System.out.println("______________________________________________________");
+		System.out.println(playersList.get(player).getCharacter());
+		System.out.println(BOLD + "Bank: $" + ANSI_RESET + playersList.get(player).getBank());
+		
+		if(playersList.get(player).isJail() == true) {
+			
+			System.out.println(BOLD + "Jail Status: " + ANSI_RESET + ANSI_RED + "ARRESTED" + ANSI_RESET);
+		}else {
+			
+			System.out.println(BOLD + "Jail Status: " + ANSI_RESET + ANSI_CYAN + "FREE" + ANSI_RESET);
+		}
+
+		System.out.println("                    " + UNDERLINED + "Assets" + ANSI_RESET);
+		
+		int counter = 0;
+		ArrayList<ISetting> mine = new ArrayList<ISetting>();
+		
+		for(int i = 0; i < board.size(); i++) {
+			
+			IProperty pro = board.get(i);
+			
+			if(pro.getOwner() == player) {
+				
+				//System.out.println("Name " + pro.getName());
+				mine.add(pro);
+				counter++;
+			}
+			
+//			if(pro.getOwner() != 5) {
+//				
+//				System.out.println("Owner " + pro.getOwner());
+//				System.out.println("Name " + pro.getName());
+//			}
+		}
+		
+		for(int z = 0; z < mine.size(); z++) {
+			
+			IProperty pro = mine.get(z);
+			
+			if(z%2 == 0 && z > 0) {
+				
+				System.out.println("");
+			}
+			
+			System.out.print(padRight(pro.getName(), 30));
+		}
+		
+		if(counter == 0) {
+			
+			System.out.println("No properties owned");
+		}
+		System.out.println("");
+		
 	}
 	
 public static void fillCharacters() {

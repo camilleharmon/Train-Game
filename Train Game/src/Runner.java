@@ -10,7 +10,7 @@ public class Runner {
 	static ArrayList <Object> objects = new ArrayList<Object>();
 	static ArrayList <Character> characterList = new ArrayList<Character>();
 	static Scanner file;
-	//
+	///
 	public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";

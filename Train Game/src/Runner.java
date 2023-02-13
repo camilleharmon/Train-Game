@@ -41,7 +41,7 @@ public class Runner {
 	
 public static void fillCharacters() {
 		
-		characterList.add(new String(ANSI_CYAN + "Fred" + ANSI_RESET));
+		characterList.add(new Character(ANSI_CYAN + "Ticket Man" + ANSI_RESET, 0));
 		
 	}
 

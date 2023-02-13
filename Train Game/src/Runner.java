@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.*;
@@ -36,15 +37,18 @@ public class Runner {
     public static final String REVERSE = "\u001b[7m;1m";
 	
 	public static void main(String[] args) {
-		//make game here
+	
+		fillCharacters();
+		fillBoard();
 
 	}
 	
-	public static void display(int player) {
+	public static void display(int char) {
+>>>>>>> branch 'master' of https://github.com/camilleharmon/Train-Game.git
 		
 		//System.out.println("______________________________________________________");
-		System.out.println(playersList.get(player).getCharacter());
-		System.out.println(BOLD + "Bank: $" + ANSI_RESET + playersList.get(player).getBank());
+		System.out.println(characterList().getName());
+		System.out.println(BOLD + "Bond: $" + ANSI_RESET + playersList.get(0).getBank());
 		
 		if(playersList.get(player).isJail() == true) {
 			
@@ -57,7 +61,7 @@ public class Runner {
 		System.out.println("                    " + UNDERLINED + "Assets" + ANSI_RESET);
 		
 		int counter = 0;
-		ArrayList<ISetting> mine = new ArrayList<ISetting>();
+		ArrayList<IProperty> mine = new ArrayList<IProperty>();
 		
 		for(int i = 0; i < board.size(); i++) {
 			
@@ -79,7 +83,7 @@ public class Runner {
 		
 		for(int z = 0; z < mine.size(); z++) {
 			
-			IProperty pro = mine.get(z);
+			ISetting pro = mine.get(z);
 			
 			if(z%2 == 0 && z > 0) {
 				
@@ -94,18 +98,31 @@ public class Runner {
 			System.out.println("No properties owned");
 		}
 		System.out.println("");
-		
+		//System.out.println("______________________________________________________");
 	}
 	
-public static void fillCharacters() {
+	public static void fillCharacters() {
 		
-		characterList.add(new String(ANSI_CYAN + "Fred" + ANSI_RESET));
+		characterList.add(new Character(ANSI_CYAN + "Ticket CLerk" + ANSI_RESET, "Unknown", 0));
+		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 0));
+		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 0));
+		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 0));
+		characterList.add(new Character(ANSI_CYAN + "Stewardess" + ANSI_RESET, "Unknown", 0));
+		characterList.add(new Character(ANSI_CYAN + "Cook" + ANSI_RESET, "Unknown", 0));
+		
+		characterList.add(new Character(ANSI_CYAN + "Doctor" + ANSI_RESET, "Valentine Booth", 0));
+		characterList.add(new Character(ANSI_CYAN + "Clown" + ANSI_RESET, "Bam Bam", 0));
+		characterList.add(new Character(ANSI_CYAN + "Author" + ANSI_RESET, "Harper Greene", 0));
+		characterList.add(new Character(ANSI_CYAN + "Clown Prosecutor" + ANSI_RESET, "Rosalind Francis", 0));
+		characterList.add(new Character(ANSI_CYAN + "Rich Dude" + ANSI_RESET, "Leonard Hill", 0));
+		characterList.add(new Character(ANSI_CYAN + "Butler" + ANSI_RESET, "Horace Armstrong", 0));
 		
 	}
 
-	public static void fillBoard() throws IOException{
+	public static void fillBoard(){
 		
-		System.out.print("Making board");
+		System.out.println("");
+		System.out.print("Loading Game");
 		
 		for(int i = 0; i < 3; i++) {
 			
@@ -119,118 +136,7 @@ public static void fillCharacters() {
 		}
 		System.out.println("");
 		
-		for(int i = 0; i<40; i++) {
-			
-			String type = file.next();
-			
-			if(type.equals("Estate")) {
-				
-				String name = file.next();
-				int num = file.nextInt();
-				int price = file.nextInt();
-				int owner = file.nextInt();
-				boolean fs = file.nextBoolean();
-				int level = file.nextInt();
-				String group = file.next();
-				int rent1 = file.nextInt();
-				
-				if(group.equals("Brown")) {
-					
-					board.add(new Estate(ANSI_MAGENTA + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-				}else if(group.equals("Azure")) {
-					
-					board.add(new Estate(LBLUE + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-				}else if(group.equals("Pink")) {
-					
-					board.add(new Estate(PINK + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-				}else if(group.equals("Orange")) {
-					
-					board.add(new Estate(ORANGE + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-				}else if(group.equals("Red")) {
-					
-					board.add(new Estate(RED + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-				}else if(group.equals("Yellow")) {
-					
-					board.add(new Estate(YELLOW + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-				}else if(group.equals("Green")) {
-					
-					board.add(new Estate(GREEN + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-				}else if(group.equals("Green")) {
-					
-					board.add(new Estate(BLUE + name + ANSI_RESET, num, price, owner, fs, level, group, rent1));
-				}
-				
-				board.add(new Estate(name, num, price, owner, fs, level, group, rent1));
-				
-			}else if(type.equals("Factory")) {
-				
-				String name = file.next();
-				int num = file.nextInt();
-				int price = file.nextInt();
-				int owner = file.nextInt();
-				boolean fs = file.nextBoolean();
-				int level = file.nextInt();
-				String group = file.next();
-				int rent1 = file.nextInt();
-				
-				board.add(new Factory(name, num, price, owner, fs, level, group, rent1));
-			}else if(type.equals("Restaurant")) {
-				
-				String name = file.next();
-				int num = file.nextInt();
-				int price = file.nextInt();
-				int owner = file.nextInt();
-				boolean fs = file.nextBoolean();
-				int level = file.nextInt();
-				String group = file.next();
-				int rent1 = file.nextInt();
-				
-				board.add(new Restaurant(name, num, price, owner, fs, level, group, rent1));
-			}else if(type.equals("Go")) {
-				
-				String name = file.next();
-				int num = file.nextInt();
-				
-				board.add(new Go(name, num));
-			}else if(type.equals("Jail")) {
-				
-				String name = file.next();
-				int num = file.nextInt();
-				
-				board.add(new Jail(name, num));
-			}else if(type.equals("GoToJail")) {
-				
-				String name = file.next();
-				int num = file.nextInt();
-				
-				board.add(new GoToJail(name, num));
-			}else if(type.equals("FreeSpace")) {
-				
-				String name = file.next();
-				int num = file.nextInt();
-				
-				board.add(new FreeSpace(name, num));
-			}else if(type.equals("Jeepers")) {
-				
-				String name = file.next();
-				int num = file.nextInt();
-				
-				board.add(new Jeepers(name, num));
-			}else if(type.equals("CardSpace")) {
-				
-				String name = file.next();
-				int num = file.nextInt();
-				boolean iz = file.nextBoolean();
-				
-				board.add(new CardSpace(name, num, iz));
-			}
-		}
 		
-//		for(int k = 0; k < board.size(); k++) {
-//			
-//			IProperty pro = board.get(k);
-//			System.out.println(pro.getName());
-//		}
 		
 		try {
 			Thread.sleep(200);
@@ -238,7 +144,11 @@ public static void fillCharacters() {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Board Complete!");
+		System.out.println("Game Loaded!");
 		System.out.println("");
+	}
+
+	public static String padRight(String s, int n) {
+	     return String.format("%-" + n + "s", s);  
 	}
 }

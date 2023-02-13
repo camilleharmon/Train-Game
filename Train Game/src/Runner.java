@@ -39,12 +39,12 @@ public class Runner {
 	public static void main(String[] args) {
 	
 		fillCharacters();
+		fillObjects();
 		fillBoard();
 
 	}
 	
-	public static void display(int char) {
->>>>>>> branch 'master' of https://github.com/camilleharmon/Train-Game.git
+	public static void charDisplay(int char) {
 		
 		//System.out.println("______________________________________________________");
 		System.out.println(characterList().getName());
@@ -103,19 +103,59 @@ public class Runner {
 	
 	public static void fillCharacters() {
 		
-		characterList.add(new Character(ANSI_CYAN + "Ticket CLerk" + ANSI_RESET, "Unknown", 0));
-		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 0));
-		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 0));
-		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 0));
-		characterList.add(new Character(ANSI_CYAN + "Stewardess" + ANSI_RESET, "Unknown", 0));
-		characterList.add(new Character(ANSI_CYAN + "Cook" + ANSI_RESET, "Unknown", 0));
+		//Crew
+		characterList.add(new Character(ANSI_CYAN + "Ticket CLerk" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Stewardess" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Cook" + ANSI_RESET, "Unknown", 0, 0));
 		
-		characterList.add(new Character(ANSI_CYAN + "Doctor" + ANSI_RESET, "Valentine Booth", 0));
-		characterList.add(new Character(ANSI_CYAN + "Clown" + ANSI_RESET, "Bam Bam", 0));
-		characterList.add(new Character(ANSI_CYAN + "Author" + ANSI_RESET, "Harper Greene", 0));
-		characterList.add(new Character(ANSI_CYAN + "Clown Prosecutor" + ANSI_RESET, "Rosalind Francis", 0));
-		characterList.add(new Character(ANSI_CYAN + "Rich Dude" + ANSI_RESET, "Leonard Hill", 0));
-		characterList.add(new Character(ANSI_CYAN + "Butler" + ANSI_RESET, "Horace Armstrong", 0));
+		//Passengers
+		characterList.add(new Character(ANSI_CYAN + "Doctor" + ANSI_RESET, "Valentine Booth", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Clown" + ANSI_RESET, "Bam Bam", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Author" + ANSI_RESET, "Harper Greene", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Clown Prosecutor" + ANSI_RESET, "Rosalind Francis", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Rich Dude" + ANSI_RESET, "Leonard Hill", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Butler" + ANSI_RESET, "Horace Armstrong", 0, 0));
+		
+		characterList.add(new Character(ANSI_CYAN + "Ghost" + ANSI_RESET, "George Washington", 0, 0));
+		
+	}
+	
+	public static void fillObjects() {
+		
+		//Cook
+		objects.add(new Object(ANSI_RED + "Frying Pan" + ANSI_RESET, 22, 0));
+		objects.add(new Object(ANSI_RED + "Jar of Pickles" + ANSI_RESET, 22, 1));
+		
+		//Stewardess
+		objects.add(new Object(ANSI_RED + "Steak" + ANSI_RESET, 20, 2));
+		objects.add(new Object(ANSI_RED + "Carrots" + ANSI_RESET, 20, 3));
+		objects.add(new Object(ANSI_RED + "Apple" + ANSI_RESET, 20, 4));
+		objects.add(new Object(ANSI_RED + "Mystery" + ANSI_RESET, 20, 5));
+		
+		//Richie
+		objects.add(new Object(ANSI_RED + "Money $$$" + ANSI_RESET, 27, 6));
+		
+		//Doctor
+		objects.add(new Object(ANSI_RED + "Pills" + ANSI_RESET, 23, 7));
+		
+		//Clown
+		objects.add(new Object(ANSI_RED + "Questionable Flowers" + ANSI_RESET, 24, 8));
+		
+		//Room1
+		objects.add(new Object(ANSI_RED + "Pair of Socks" + ANSI_RESET, 10, 9));
+		
+		//Room2
+		objects.add(new Object(ANSI_RED + "Bed" + ANSI_RESET, 11, 10));
+		
+		//Intro
+		objects.add(new Object(ANSI_RED + "Engagement Ring" + ANSI_RESET, 0, 11));
+		
+		//Kitchen
+		objects.add(new Object(ANSI_RED + "Spice Bottle" + ANSI_RESET, 2, 12));
+		objects.add(new Object(ANSI_RED + "Baby Carrots" + ANSI_RESET, 2, 13));
 		
 	}
 

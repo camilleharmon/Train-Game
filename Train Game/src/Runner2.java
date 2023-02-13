@@ -42,7 +42,7 @@ public class Runner2 {
 
 	}
 	
-public static void display(int char) {
+public static void charDisplay(/*int char*/) {
 		
 		//System.out.println("______________________________________________________");
 		System.out.println(characterList().getName());
@@ -118,32 +118,27 @@ public static void display(int char) {
 	}
 
 	public static void fillBoard(){
-		
-		System.out.println("");
-		System.out.print("Loading Game");
-		
-		for(int i = 0; i < 3; i++) {
-			
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.print(".");
-		}
-		System.out.println("");
-		
-		
-		
-		try {
-			Thread.sleep(200);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("Game Loaded!");
-		System.out.println("");
+
+		//Boxcars
+		board.add(new Boxcar("Intro", 0));
+		board.add(new Boxcar("Caboose", 0));
+		board.add(new Boxcar("Kitchen", 0));
+		board.add(new Boxcar("Main", 0));
+		board.add(new Boxcar("First Class", 0));
+		board.add(new Boxcar("Engine", 0));
+		//Compartments
+		board.add(new Compartment("???", 0, false));
+		board.add(new Compartment("Outside", 0, false));
+		board.add(new Compartment("Bathroom", 0, false));
+		board.add(new Compartment("Pantry", 0, false));
+		board.add(new Compartment("Bam Bam's Room", 0, false));
+		board.add(new Compartment("My Room", 0, true));
+		board.add(new Compartment("Harper Greene's Room", 0, false));
+		board.add(new Compartment("Rosalind Francis' Room", 0, false));
+		board.add(new Compartment("The Room of Leonard Hill (and Horace, but he doesnt matter)", 0, false));
+		board.add(new Compartment("Valentine Booth's Room", 0, false));
+		//One more boxcar
+		board.add(new Boxcar("Driving Area", 0));
 	}
 
 	public static String padRight(String s, int n) {

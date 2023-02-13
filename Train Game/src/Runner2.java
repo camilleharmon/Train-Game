@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.*;
 
 public class Runner2 {
 
@@ -9,6 +10,12 @@ public class Runner2 {
 	static ArrayList <Object> objects = new ArrayList<Object>();
 	static ArrayList <Character> characterList = new ArrayList<Character>();
 	static Scanner file;
+	
+	//added player and 2 scanners
+	static Player player;
+	static Scanner userIntInput = new Scanner(System.in);
+	static Scanner userInput = new Scanner(System.in);
+	//
 	
 	public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -36,13 +43,16 @@ public class Runner2 {
     public static final String REVERSE = "\u001b[7m;1m";
 	
 	public static void main(String[] args) {
-	
+		
+		
 		fillCharacters();
+		fillObjects();
 		fillBoard();
+		makePlayer();
 
 	}
 	
-public static void charDisplay(/*int char*/) {
+	public static void charDisplay(int char) {
 		
 		//System.out.println("______________________________________________________");
 		System.out.println(characterList().getName());
@@ -101,46 +111,116 @@ public static void charDisplay(/*int char*/) {
 	
 	public static void fillCharacters() {
 		
-		characterList.add(new Character(ANSI_CYAN + "Ticket CLerk" + ANSI_RESET, "Unknown", 0));
-		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 0));
-		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 0));
-		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 0));
-		characterList.add(new Character(ANSI_CYAN + "Stewardess" + ANSI_RESET, "Unknown", 0));
-		characterList.add(new Character(ANSI_CYAN + "Cook" + ANSI_RESET, "Unknown", 0));
+		//Crew
+		characterList.add(new Character(ANSI_CYAN + "Ticket CLerk" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Stewardess" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Cook" + ANSI_RESET, "Unknown", 0, 0));
 		
-		characterList.add(new Character(ANSI_CYAN + "Doctor" + ANSI_RESET, "Valentine Booth", 0));
-		characterList.add(new Character(ANSI_CYAN + "Clown" + ANSI_RESET, "Bonobo", 0));
-		characterList.add(new Character(ANSI_CYAN + "Author" + ANSI_RESET, "Harper Greene", 0));
-		characterList.add(new Character(ANSI_CYAN + "Clown Prosecutor" + ANSI_RESET, "Rosalind Francis", 0));
-		characterList.add(new Character(ANSI_CYAN + "Rich Dude" + ANSI_RESET, "Leonard Hill", 0));
-		characterList.add(new Character(ANSI_CYAN + "Butler" + ANSI_RESET, "Horace Armstrong", 0));
+		//Passengers
+		characterList.add(new Character(ANSI_CYAN + "Doctor" + ANSI_RESET, "Valentine Booth", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Clown" + ANSI_RESET, "Bam Bam", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Author" + ANSI_RESET, "Harper Greene", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Clown Prosecutor" + ANSI_RESET, "Rosalind Francis", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Rich Dude" + ANSI_RESET, "Leonard Hill", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Butler" + ANSI_RESET, "Horace Armstrong", 0, 0));
+		
+		characterList.add(new Character(ANSI_CYAN + "Ghost" + ANSI_RESET, "George Washington", 0, 0));
+		
+	}
+	
+	public static void fillObjects() {
+		
+		//Cook
+		objects.add(new Object(ANSI_RED + "Frying Pan" + ANSI_RESET, 22, 0));
+		objects.add(new Object(ANSI_RED + "Jar of Pickles" + ANSI_RESET, 22, 1));
+		
+		//Stewardess
+		objects.add(new Object(ANSI_RED + "Steak" + ANSI_RESET, 20, 2));
+		objects.add(new Object(ANSI_RED + "Carrots" + ANSI_RESET, 20, 3));
+		objects.add(new Object(ANSI_RED + "Apple" + ANSI_RESET, 20, 4));
+		objects.add(new Object(ANSI_RED + "Mystery" + ANSI_RESET, 20, 5));
+		
+		//Richie
+		objects.add(new Object(ANSI_RED + "Money $$$" + ANSI_RESET, 27, 6));
+		
+		//Doctor
+		objects.add(new Object(ANSI_RED + "Pills" + ANSI_RESET, 23, 7));
+		
+		//Clown
+		objects.add(new Object(ANSI_RED + "Questionable Flowers" + ANSI_RESET, 24, 8));
+		
+		//Room1
+		objects.add(new Object(ANSI_RED + "Pair of Socks" + ANSI_RESET, 10, 9));
+		
+		//Room2
+		objects.add(new Object(ANSI_RED + "Bed" + ANSI_RESET, 11, 10));
+		
+		//Intro
+		objects.add(new Object(ANSI_RED + "Engagement Ring" + ANSI_RESET, 0, 11));
+		
+		//Kitchen
+		objects.add(new Object(ANSI_RED + "Spice Bottle" + ANSI_RESET, 2, 12));
+		objects.add(new Object(ANSI_RED + "Baby Carrots" + ANSI_RESET, 2, 13));
 		
 	}
 
-	public static void fillBoard(){
-
+	public static void fillBoard() {
+		
+		System.out.println("");
+		System.out.print("Loading Game");
+		
+		for(int i = 0; i < 3; i++) {
+			
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.print(".");
+		}
+		System.out.println("");
+		
 		//Boxcars
-		board.add(new Boxcar("Intro", 0));
-		board.add(new Boxcar("Caboose", 0));
-		board.add(new Boxcar("Kitchen", 0));
-		board.add(new Boxcar("Main", 0));
-		board.add(new Boxcar("First Class", 0));
-		board.add(new Boxcar("Engine", 0));
-		//Compartments
-		board.add(new Compartment("???", 0, false));
-		board.add(new Compartment("Outside", 0, false));
-		board.add(new Compartment("Bathroom", 0, false));
-		board.add(new Compartment("Pantry", 0, false));
-		board.add(new Compartment("Bam Bam's Room", 0, false));
-		board.add(new Compartment("My Room", 0, true));
-		board.add(new Compartment("Harper Greene's Room", 0, false));
-		board.add(new Compartment("Rosalind Francis' Room", 0, false));
-		board.add(new Compartment("The Room of Leonard Hill (and Horace, but he doesnt matter)", 0, false));
-		board.add(new Compartment("Valentine Booth's Room", 0, false));
-		//One more boxcar
-		board.add(new Boxcar("Driving Area", 0));
+				board.add(new Boxcar("Intro", 0));
+				board.add(new Boxcar("Caboose", 0));
+				board.add(new Boxcar("Kitchen", 0));
+				board.add(new Boxcar("Main", 0));
+				board.add(new Boxcar("First Class", 0));
+				board.add(new Boxcar("Engine", 0));
+				//Compartments
+				board.add(new Compartment("???", 0, false));
+				board.add(new Compartment("Outside", 0, false));
+				board.add(new Compartment("Bathroom", 0, false));
+				board.add(new Compartment("Pantry", 0, false));
+				board.add(new Compartment("Bam Bam's Room", 0, false));
+				board.add(new Compartment("My Room", 0, true));
+				board.add(new Compartment("Harper Greene's Room", 0, false));
+				board.add(new Compartment("Rosalind Francis' Room", 0, false));
+				board.add(new Compartment("The Room of Leonard Hill (and Horace, but he doesnt matter)", 0, false));
+				board.add(new Compartment("Valentine Booth's Room", 0, false));
+				//One more boxcar
+				board.add(new Boxcar("Driving Area", 0));
+		
+		try {
+			Thread.sleep(200);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Game Loaded!");
+		System.out.println("");
 	}
-
+	
+	public static void makePlayer() {
+		
+		System.out.println("Hello! If you would like to buy a train ticket, please enter your name.");
+		String name = userInput.nextLine();
+		player = new Player(name, 200, 0);
+	}
 	public static String padRight(String s, int n) {
 	     return String.format("%-" + n + "s", s);  
 	}

@@ -23,5 +23,5 @@ public class Setting implements ISetting{
 	public void setDay(int day) {
 		this.day = day;
 	}
-	
+	//
 }

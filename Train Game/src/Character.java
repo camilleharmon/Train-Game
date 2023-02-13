@@ -13,4 +13,4 @@ public class Character {
 		location = l;
 		bond = b;
 	}
-}
+}///

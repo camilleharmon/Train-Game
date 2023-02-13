@@ -11,7 +11,11 @@ public class Runner {
 	static ArrayList <Character> characterList = new ArrayList<Character>();
 	static Scanner file;
 	static boolean game = true;
-	///
+
+	static Player player;
+	static Scanner userIntInput = new Scanner(System.in);
+	static Scanner userInput = new Scanner(System.in);
+	
 	public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -253,6 +257,13 @@ public class Runner {
 		}
 		System.out.println("Game Loaded!");
 		System.out.println("");
+	}
+	
+	public static void makePlayer() {
+		
+		System.out.println("Hello! If you would like to buy a train ticket, please enter your name.");
+		String name = userInput.nextLine();
+		player = new Player(name, 200, 0);
 	}
 
 	public static String padRight(String s, int n) {

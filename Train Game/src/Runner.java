@@ -10,6 +10,7 @@ public class Runner {
 	static ArrayList <Object> objects = new ArrayList<Object>();
 	static ArrayList <Character> characterList = new ArrayList<Character>();
 	static Scanner file;
+	static boolean game = true;
 	///
 	public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -43,22 +44,69 @@ public class Runner {
 		fillBoard();
 
 	}
+	public static void gameOn() {
+		
+		int counter= 0;
+		while(game) {
+			
+			for(int i = 0; i < playersList.size(); i++) {
+				
+				if(playersList.get(i).isBankrupt() == false) {
+					
+					System.out.println("-----------------------------------------");
+					//System.out.println(playersList.get(i).getCharacter());
+					display(i);
+					rollDice();
+					move(i);
+					getSpace(i);
+					display(i);
+					//System.out.println("_________________________________________");
+				}
+				counter++;
+//				if(counter == 50) {
+//					
+//					game = false;
+//				}
+				
+			}
+			
+			
+			if(playersList.size() == 1)
+				continue;
+			
+			
+			int bCounter = 0;
+			for(int j = 0; j < playersList.size(); j++) {
+				
+				if(playersList.get(j).isBankrupt()) {
+					
+					bCounter++;
+				}
+			}
+			
+			if(bCounter >= playersList.size() - 1) {
+				
+				game = false;
+			}
+		}
+	}
 	
 	public static void charDisplay(int char) {
 		
-		//System.out.println("______________________________________________________");
-		System.out.println(characterList().getName());
-		System.out.println(BOLD + "Bond: $" + ANSI_RESET + playersList.get(0).getBank());
+		System.out.println(characterList(char).getName());
 		
-		if(playersList.get(player).isJail() == true) {
+		if(player.getBond() == 0) {
 			
-			System.out.println(BOLD + "Jail Status: " + ANSI_RESET + ANSI_RED + "ARRESTED" + ANSI_RESET);
-		}else {
+			System.out.println(BOLD + "Bond: " + ANSI_RESET + ANSI_RED + "Low" + ANSI_RESET);
+		}else if(player.getBond() == 1){
 			
-			System.out.println(BOLD + "Jail Status: " + ANSI_RESET + ANSI_CYAN + "FREE" + ANSI_RESET);
+			System.out.println(BOLD + "Bond: " + ANSI_RESET + ANSI_MAGENTA + "Average" + ANSI_RESET);
+		}else{
+			
+			System.out.println(BOLD + "Bond: " + ANSI_RESET + ANSI_GREEN + "High" + ANSI_RESET);
 		}
 
-		System.out.println("                    " + UNDERLINED + "Assets" + ANSI_RESET);
+		System.out.println("                    " + UNDERLINED + "Items" + ANSI_RESET);
 		
 		int counter = 0;
 		ArrayList<IProperty> mine = new ArrayList<IProperty>();
@@ -95,7 +143,7 @@ public class Runner {
 		
 		if(counter == 0) {
 			
-			System.out.println("No properties owned");
+			System.out.println("No items owned");
 		}
 		System.out.println("");
 		//System.out.println("______________________________________________________");

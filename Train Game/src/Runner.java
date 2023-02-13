@@ -176,7 +176,26 @@ public class Runner {
 		}
 		System.out.println("");
 		
-		
+		//Boxcars
+				board.add(new Boxcar("Intro", 0));
+				board.add(new Boxcar("Caboose", 0));
+				board.add(new Boxcar("Kitchen", 0));
+				board.add(new Boxcar("Main", 0));
+				board.add(new Boxcar("First Class", 0));
+				board.add(new Boxcar("Engine", 0));
+				//Compartments
+				board.add(new Compartment("???", 0, false));
+				board.add(new Compartment("Outside", 0, false));
+				board.add(new Compartment("Bathroom", 0, false));
+				board.add(new Compartment("Pantry", 0, false));
+				board.add(new Compartment("Bam Bam's Room", 0, false));
+				board.add(new Compartment("My Room", 0, true));
+				board.add(new Compartment("Harper Greene's Room", 0, false));
+				board.add(new Compartment("Rosalind Francis' Room", 0, false));
+				board.add(new Compartment("The Room of Leonard Hill (and Horace, but he doesnt matter)", 0, false));
+				board.add(new Compartment("Valentine Booth's Room", 0, false));
+				//One more boxcar
+				board.add(new Boxcar("Driving Area", 0));
 		
 		try {
 			Thread.sleep(200);

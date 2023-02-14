@@ -49,8 +49,6 @@ public class Runner2 {
 		fillBoard();
 		charDisplay(22);
 		makePlayer();
-		//added description method
-		setDescription();
 		displayRoom();
 
 	}
@@ -102,18 +100,14 @@ public class Runner2 {
 //	}
 //	
 	
-	//Description method
-	
-	public static void setDescription(){
-		
-		
-	}
+
 	public static void displayRoom() {
 
 	    System.out.println("You are in: " + board.get(player.getLocation()).getName());
+	    System.out.println("Description: " + board.get(player.getLocation()).getDescription());
 	    System.out.println("It is day " + board.get(player.getLocation()).getDay());
 	    System.out.println("These people are in the room:");
-
+	    
 	    for(Character c : characterList){
 	        if(c.getLocation() == player.getLocation()) {
 
@@ -249,12 +243,12 @@ public class Runner2 {
 		System.out.println("");
 		
 		//Boxcars
-				board.add(new Boxcar("Intro", 0, "You are in an incomprehensible void while waiting for the train. The appearence of the room is constantly changing. You may be able to talk to people and collect objects while waiting for the train's harrowing call."));
+				board.add(new Boxcar("Intro", 0, "You are in an incomprehensible void while waiting for the train. The appearence of the room is constantly changing. \nYou may be able to talk to people and collect objects while waiting for the train's harrowing call."));
 				board.add(new Boxcar("Caboose", 0, "You are in the back of the train. There is not much to see here, but there may be secrets to unlock."));
 				board.add(new Boxcar("Kitchen", 0, "You are in the kitchen. You smell the wonderful smell of carmalizing carrots, but what else could lie under the spices?"));
-				board.add(new Boxcar("Main", 0));
-				board.add(new Boxcar("First Class", 0));
-				board.add(new Boxcar("Engine", 0));
+				board.add(new Boxcar("Main", 0, "Everyone gathers in the main room for conversations, but what could you access from her?"));
+				board.add(new Boxcar("First Class", 0, "Do you really want to sit with snobs like these? Here sit people who pay money to simply sit on nicer fabric. \nBut money brings allies so do with them what you will."));
+				board.add(new Boxcar("Engine", 0, "It is so hot in this room. It feels like there is a portal to the pits of hell here. But if you want to burn, I say do it!"));
 				//Compartments
 				board.add(new Compartment("???", 0, false));
 				board.add(new Compartment("Outside", 0, false));
@@ -267,7 +261,7 @@ public class Runner2 {
 				board.add(new Compartment("The Room of Leonard Hill (and Horace, but he doesnt matter)", 0, false));
 				board.add(new Compartment("Valentine Booth's Room", 0, false));
 				//One more boxcar
-				board.add(new Boxcar("Driving Area", 0));
+				board.add(new Boxcar("The Driving Compartment", 0, "Do you want to make the sound? Come on pull the lever. Make the train whistle. Nothing else to do here."));
 		
 		try {
 			Thread.sleep(200);

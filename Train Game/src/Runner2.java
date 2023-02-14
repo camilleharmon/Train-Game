@@ -13,6 +13,7 @@ public class Runner2 {
 	static boolean game = true;
 
 	static Player player;
+	static int cha = 0;
 	static Scanner userIntInput = new Scanner(System.in);
 	static Scanner userInput = new Scanner(System.in);
 	
@@ -46,58 +47,85 @@ public class Runner2 {
 		fillCharacters();
 		fillObjects();
 		fillBoard();
+		charDisplay(22);
+		makePlayer();
+		//added description method
+		setDescription();
+		displayRoom();
 
 	}
-	public static void gameOn() {
-		
-		int counter= 0;
-		while(game) {
-			
-			for(int i = 0; i < playersList.size(); i++) {
-				
-				if(playersList.get(i).isBankrupt() == false) {
-					
-					System.out.println("-----------------------------------------");
-					//System.out.println(playersList.get(i).getCharacter());
-					display(i);
-					rollDice();
-					move(i);
-					getSpace(i);
-					display(i);
-					//System.out.println("_________________________________________");
-				}
-				counter++;
-//				if(counter == 50) {
-//					
-//					game = false;
-//				}
-				
-			}
-			
-			
-			if(playersList.size() == 1)
-				continue;
-			
-			
-			int bCounter = 0;
-			for(int j = 0; j < playersList.size(); j++) {
-				
-				if(playersList.get(j).isBankrupt()) {
-					
-					bCounter++;
-				}
-			}
-			
-			if(bCounter >= playersList.size() - 1) {
-				
-				game = false;
-			}
-		}
-	}
-	
-//	public static void charDisplay(int char) {
+//	public static void gameOn() {
 //		
-//		System.out.println(characterList(char).getName());
+//		int counter= 0;
+//		while(game) {
+//			
+//			for(int i = 0; i < playersList.size(); i++) {
+//				
+//				if(playersList.get(i).isBankrupt() == false) {
+//					
+//					System.out.println("-----------------------------------------");
+//					//System.out.println(playersList.get(i).getCharacter());
+//					display(i);
+//					rollDice();
+//					move(i);
+//					getSpace(i);
+//					display(i);
+//					//System.out.println("_________________________________________");
+//				}
+//				counter++;
+////				if(counter == 50) {
+////					
+////					game = false;
+////				}
+//				
+//			}
+//			
+//			
+//			if(playersList.size() == 1)
+//				continue;
+//			
+//			
+//			int bCounter = 0;
+//			for(int j = 0; j < playersList.size(); j++) {
+//				
+//				if(playersList.get(j).isBankrupt()) {
+//					
+//					bCounter++;
+//				}
+//			}
+//			
+//			if(bCounter >= playersList.size() - 1) {
+//				
+//				game = false;
+//			}
+//		}
+//	}
+//	
+	
+	//Description method
+	
+	public static void setDescription(){
+		
+		
+	}
+	public static void displayRoom() {
+
+	    System.out.println("You are in: " + board.get(player.getLocation()).getName());
+	    System.out.println("It is day " + board.get(player.getLocation()).getDay());
+	    System.out.println("These people are in the room:");
+
+	    for(Character c : characterList){
+	        if(c.getLocation() == player.getLocation()) {
+
+	          System.out.println("     " + c.getName() + " " + c.getSecondName());
+	        }
+	          
+	      }
+	  }
+	
+	public static void charDisplay(int cha) {
+		
+//		System.out.println(characterList(cha).getName());
 //		
 //		if(player.getBond() == 0) {
 //			
@@ -111,64 +139,40 @@ public class Runner2 {
 //		}
 //
 //		System.out.println("                    " + UNDERLINED + "Items" + ANSI_RESET);
-//		
-//		int counter = 0;
-//		ArrayList<IProperty> mine = new ArrayList<IProperty>();
-//		
-//		for(int i = 0; i < board.size(); i++) {
-//			
-//			IProperty pro = board.get(i);
-//			
-//			if(pro.getOwner() == player) {
-//				
-//				//System.out.println("Name " + pro.getName());
-//				mine.add(pro);
-//				counter++;
-//			}
-//			
-////			if(pro.getOwner() != 5) {
-////				
-////				System.out.println("Owner " + pro.getOwner());
-////				System.out.println("Name " + pro.getName());
-////			}
-//		}
-//		
-//		for(int z = 0; z < mine.size(); z++) {
-//			
-//			ISetting pro = mine.get(z);
-//			
-//			if(z%2 == 0 && z > 0) {
-//				
-//				System.out.println("");
-//			}
-//			
-//			System.out.print(padRight(pro.getName(), 30));
-//		}
-//		
-//		if(counter == 0) {
-//			
-//			System.out.println("No items owned");
-//		}
-//		System.out.println("");
-//		//System.out.println("______________________________________________________");
-//	}
-
-  //added display room method
-  public static void displayRoom() {
-
-    System.out.println("You are in: " + board.get(player.getLocation()).getName());
-    System.out.println("It is day " + board.get(player.getLocation()).getDay());
-    System.out.println("These people are in the room:");
-
-    for(Character c : characterList){
-        if(c.getLocation() == player.getLocation()) {
-
-          System.out.println("     " + c.getName() + " " + c.getSecondName());
-        }
-          
-      }
-  }
-  //
+		
+		int counter = 0;
+		ArrayList<MyObject> mine = new ArrayList<MyObject>();
+		
+		for(int i = 0; i < objects.size(); i++) {
+			
+			MyObject pro = objects.get(i);
+			
+			if(pro.getLocation() == cha) {
+				
+				mine.add(pro);
+				counter++;
+			}
+		}
+		
+		for(int z = 0; z < mine.size(); z++) {
+			
+			MyObject pro = mine.get(z);
+			
+			if(z%2 == 0 && z > 0) {
+				
+				System.out.println("");
+			}
+			
+			System.out.print(padRight(pro.getName(), 30));
+		}
+		
+		if(counter == 0) {
+			
+			System.out.println("No items owned");
+		}
+		System.out.println("");
+	}
+	
 	public static void fillCharacters() {
 		
 		//Crew
@@ -245,9 +249,9 @@ public class Runner2 {
 		System.out.println("");
 		
 		//Boxcars
-				board.add(new Boxcar("Intro", 0));
-				board.add(new Boxcar("Caboose", 0));
-				board.add(new Boxcar("Kitchen", 0));
+				board.add(new Boxcar("Intro", 0, "You are in an incomprehensible void while waiting for the train. The appearence of the room is constantly changing. You may be able to talk to people and collect objects while waiting for the train's harrowing call."));
+				board.add(new Boxcar("Caboose", 0, "You are in the back of the train. There is not much to see here, but there may be secrets to unlock."));
+				board.add(new Boxcar("Kitchen", 0, "You are in the kitchen. You smell the wonderful smell of carmalizing carrots, but what else could lie under the spices?"));
 				board.add(new Boxcar("Main", 0));
 				board.add(new Boxcar("First Class", 0));
 				board.add(new Boxcar("Engine", 0));

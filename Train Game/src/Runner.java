@@ -16,6 +16,7 @@ public class Runner {
 	static int cha = 0;
 	static Scanner userIntInput = new Scanner(System.in);
 	static Scanner userInput = new Scanner(System.in);
+	static String enter;
 	
 	public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -106,13 +107,80 @@ public class Runner {
 	    System.out.println("It is day " + board.get(player.getLocation()).getDay());
 	    System.out.println("These people are in the room:");
 
-	    for(Character c : characterList){
-	        if(c.getLocation() == player.getLocation()) {
-
-	          System.out.println("     " + c.getName() + " " + c.getSecondName());
-	        }
-	          
-	      }
+//	    for(Character c : characterList){
+//	        if(c.getLocation() == player.getLocation()) {
+//
+//	          //System.out.println("     " + c.getName() + " " + c.getSecondName());
+//	          System.out.print(padRight(c.getName() + " " + c.getSecondName(), 30));
+//	        }
+//	          
+//	      }
+	    
+	    int counter = 0;
+		ArrayList<Character> here = new ArrayList<Character>();
+		
+		for(int c = 0; c < characterList.size(); c++) {
+			
+			Character ppro = characterList.get(c);
+			
+			if(characterList.get(c).getLocation() == player.getLocation()) {
+				
+				here.add(ppro);
+				counter++;
+			}
+		}
+		
+		for(int j = 0; j < here.size(); j++) {
+			
+			Character ppro = here.get(j);
+			
+			if(j%2 == 0 && j > 0) {
+				
+				System.out.println("");
+			}
+			
+			System.out.print(padRight(ppro.getName(), 30));
+		}
+		
+		if(counter == 0) {
+			
+			System.out.println("No characters in this room");
+		}
+		System.out.println("");
+	  
+	    //
+	    
+	    counter = 0;
+		ArrayList<MyObject> mine = new ArrayList<MyObject>();
+		
+		for(int i = 0; i < objects.size(); i++) {
+			
+			MyObject pro = objects.get(i);
+			
+			if(pro.getLocation() == player.getLocation()) {
+				
+				mine.add(pro);
+				counter++;
+			}
+		}
+		
+		for(int z = 0; z < mine.size(); z++) {
+			
+			MyObject pro = mine.get(z);
+			
+			if(z%2 == 0 && z > 0) {
+				
+				System.out.println("");
+			}
+			
+			System.out.print(padRight(pro.getName(), 30));
+		}
+		
+		if(counter == 0) {
+			
+			System.out.println("No items in this room");
+		}
+		System.out.println("");
 	  }
 	
 	public static void charDisplay(int cha) {
@@ -276,6 +344,15 @@ public class Runner {
 		System.out.println("Hello! If you would like to buy a train ticket, please enter your name.");
 		String name = userInput.nextLine();
 		player = new Player(name, 200, 0);
+		System.out.println("Sign here.");
+		enter = userInput.nextLine();
+		System.out.println("And here.");
+		enter = userInput.nextLine();
+		System.out.println("And here.");
+		enter = userInput.nextLine();
+		System.out.println("Your social security number here-");
+		enter = userInput.nextLine();
+		System.out.println("Thank you! Have a nice day.");
 	}
 
 	public static String padRight(String s, int n) {

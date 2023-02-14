@@ -283,4 +283,17 @@ public class Runner2 {
 	public static String padRight(String s, int n) {
 	     return String.format("%-" + n + "s", s);  
 	}
+	
+	public static void intro(){
+		
+		System.out.println(characterList.get(2).getName() + ": Welcome to the waiting room! I hope you will enjoy our humble little train.");
+		System.out.println(characterList.get(2).getName() + ": Lots of characters on today's ride, that's for sure");
+		System.out.println();
+		
+		boolean exploring = true;
+		while(exploring){
+				
+		}
+	}
+
 }

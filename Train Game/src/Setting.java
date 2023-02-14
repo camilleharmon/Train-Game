@@ -3,6 +3,7 @@ public class Setting implements ISetting{
 	
 	protected String name;
 	protected int day;
+	protected String description;
 	
 	Setting()
 	{
@@ -23,5 +24,16 @@ public class Setting implements ISetting{
 	public void setDay(int day) {
 		this.day = day;
 	}
-	///
+
+	public String getDescription()
+		{
+			return description;
+		}
+
+	public void setDescription(String description)
+		{
+			this.description = description;
+		}
+
+
 }

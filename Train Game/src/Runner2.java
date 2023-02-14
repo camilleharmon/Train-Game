@@ -152,7 +152,23 @@ public class Runner2 {
 		System.out.println("");
 		//System.out.println("______________________________________________________");
 	}
-	
+
+  //added display room method
+  public static void displayRoom() {
+
+    System.out.println("You are in: " + board.get(player.getLocation()).getName());
+    System.out.println("It is day " + board.get(player.getLocation()).getDay());
+    System.out.println("These people are in the room:");
+
+    for(Character c : characterList){
+        if(c.getLocation() == player.getLocation()) {
+
+          System.out.println("     " + c.getName() + " " + c.getSecondName());
+        }
+          
+      }
+  }
+  //
 	public static void fillCharacters() {
 		
 		//Crew

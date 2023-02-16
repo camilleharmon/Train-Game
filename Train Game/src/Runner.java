@@ -63,117 +63,81 @@ public class Runner {
 		displayRoom();
 
 	}
-//	public static void gameOn() {
-//		
-//		int counter= 0;
-//		while(game) {
-//			
-//			for(int i = 0; i < playersList.size(); i++) {
-//				
-//				if(playersList.get(i).isBankrupt() == false) {
-//					
-//					System.out.println("-----------------------------------------");
-//					//System.out.println(playersList.get(i).getCharacter());
-//					display(i);
-//					rollDice();
-//					move(i);
-//					getSpace(i);
-//					display(i);
-//					//System.out.println("_________________________________________");
-//				}
-//				counter++;
-////				if(counter == 50) {
-////					
-////					game = false;
-////				}
-//				
-//			}
-//			
-//			
-//			if(playersList.size() == 1)
-//				continue;
-//			
-//			
-//			int bCounter = 0;
-//			for(int j = 0; j < playersList.size(); j++) {
-//				
-//				if(playersList.get(j).isBankrupt()) {
-//					
-//					bCounter++;
-//				}
-//			}
-//			
-//			if(bCounter >= playersList.size() - 1) {
-//				
-//				game = false;
-//			}
-//		}
-//	}
-//	
+
+	public static void intro() {
+		
+//		charDisplay(0);
+		System.out.println(ANSI_CYAN + "Welcome to the waiting room! I hope you will enjo your ride upon our humble little train." + ANSI_CYAN);
+		enter = userInput.nextLine();
+		System.out.println(ANSI_CYAN + "You are welcome to look around, lots of interesting characters on the ride today" + ANSI_CYAN);
+		enter = userInput.nextLine();
+		
+		
+	}
 	
-//	public static void mainCar(){
-//		
-//		displayRoom();
-//		System.out.println("What would you like to do?");
-//		System.out.println("1) Right Door");
-//		System.out.println("2) Left Door");
-//		System.out.println("3) " +  board.get(10).getName());
-//		System.out.println("4) " +  board.get(11).getName());
-//		System.out.println("5) " +  board.get(12).getName());
-//		System.out.println("6) " +  board.get(13).getName());
-//		int choice = userIntInput.nextInt();
-//		
-//		switch(choice)
-//		{
-//		case 2:
-//				{
-//					kitchen();
-//					break;
-//				}
-//		case 3:
-//				{
-//					if(board.get(10).isUnlocked()) {
-//						
-//						clownRoom();
-//					}else {
-//						
-//						mainCar();
-//					}
-//					break;
-//				}
-//		case 4:
-//				{
-//					myRoom();
-//					break;
-//				}
-//		case 5:
-//				{
-//					if(board.get(10).isUnlocked()) {
-//						
-//						clownRoom();
-//					}else {
-//						
-//						mainCar();
-//					}
-//					break;
-//				}
-//		case 6:
-//				{
-//					if(board.get(10).isUnlocked()) {
-//						
-//						clownRoom();
-//					}else {
-//						
-//						mainCar();
-//					}
-//					break;
-//				}
-//		default:
-//				{
-//					firstClass();
-//				}
-//		}	
-//	}
+	public static void mainCar(){
+		
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) Right Door");
+		System.out.println("2) Left Door");
+		System.out.println("3) " +  board.get(10).getName());
+		System.out.println("4) " +  board.get(11).getName());
+		System.out.println("5) " +  board.get(12).getName());
+		System.out.println("6) " +  board.get(13).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 2:
+				{
+					kitchen();
+					break;
+				}
+		case 3:
+				{
+					if(board.get(10).isUnlocked()) {
+						
+						clownRoom();
+					}else {
+						
+						mainCar();
+					}
+					break;
+				}
+		case 4:
+				{
+					myRoom();
+					break;
+				}
+		case 5:
+				{
+					if(board.get(10).isUnlocked()) {
+						
+						clownRoom();
+					}else {
+						
+						mainCar();
+					}
+					break;
+				}
+		case 6:
+				{
+					if(board.get(10).isUnlocked()) {
+						
+						clownRoom();
+					}else {
+						
+						mainCar();
+					}
+					break;
+				}
+		default:
+				{
+					firstClass();
+				}
+		}	
+	}
 	
 	public static void displayRoom() {
 

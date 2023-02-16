@@ -50,4 +50,5 @@ public class Character {
 		{
 			this.bond = bond;
 		}
+	
 }

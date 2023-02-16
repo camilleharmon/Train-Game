@@ -16,6 +16,7 @@ public class Runner2 {
 	static int cha = 0;
 	static Scanner userIntInput = new Scanner(System.in);
 	static Scanner userInput = new Scanner(System.in);
+	static String enter;
 	
 	public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -100,39 +101,105 @@ public class Runner2 {
 //	}
 //	
 	
-
 	public static void displayRoom() {
 
 	    System.out.println("You are in: " + board.get(player.getLocation()).getName());
-	    System.out.println("Description: " + board.get(player.getLocation()).getDescription());
 	    System.out.println("It is day " + board.get(player.getLocation()).getDay());
+	    System.out.println(board.get(player.getLocation()).getDescription());
 	    System.out.println("These people are in the room:");
-	    
-	    for(Character c : characterList){
-	        if(c.getLocation() == player.getLocation()) {
 
-	          System.out.println("     " + c.getName() + " " + c.getSecondName());
-	        }
-	          
-	      }
+//	    for(Character c : characterList){
+//	        if(c.getLocation() == player.getLocation()) {
+//
+//	          //System.out.println("     " + c.getName() + " " + c.getSecondName());
+//	          System.out.print(padRight(c.getName() + " " + c.getSecondName(), 30));
+//	        }
+//	          
+//	      }
+	    
+	    int counter = 0;
+		ArrayList<Character> here = new ArrayList<Character>();
+		
+		for(int c = 0; c < characterList.size(); c++) {
+			
+			Character ppro = characterList.get(c);
+			
+			if(characterList.get(c).getLocation() == player.getLocation()) {
+				
+				here.add(ppro);
+				counter++;
+			}
+		}
+		
+		for(int j = 0; j < here.size(); j++) {
+			
+			Character ppro = here.get(j);
+			
+			if(j%2 == 0 && j > 0) {
+				
+				System.out.println("");
+			}
+			
+			System.out.print(padRight(ppro.getName(), 30));
+		}
+		
+		if(counter == 0) {
+			
+			System.out.println("No characters in this room");
+		}
+		System.out.println("");
+	  
+	    //
+	    
+	    counter = 0;
+		ArrayList<MyObject> mine = new ArrayList<MyObject>();
+		
+		for(int i = 0; i < objects.size(); i++) {
+			
+			MyObject pro = objects.get(i);
+			
+			if(pro.getLocation() == player.getLocation()) {
+				
+				mine.add(pro);
+				counter++;
+			}
+		}
+		
+		for(int z = 0; z < mine.size(); z++) {
+			
+			MyObject pro = mine.get(z);
+			
+			if(z%2 == 0 && z > 0) {
+				
+				System.out.println("");
+			}
+			
+			System.out.print(padRight(pro.getName(), 30));
+		}
+		
+		if(counter == 0) {
+			
+			System.out.println("No items in this room");
+		}
+		System.out.println("");
 	  }
 	
 	public static void charDisplay(int cha) {
 		
-//		System.out.println(characterList(cha).getName());
-//		
-//		if(player.getBond() == 0) {
-//			
-//			System.out.println(BOLD + "Bond: " + ANSI_RESET + ANSI_RED + "Low" + ANSI_RESET);
-//		}else if(player.getBond() == 1){
-//			
-//			System.out.println(BOLD + "Bond: " + ANSI_RESET + ANSI_MAGENTA + "Average" + ANSI_RESET);
-//		}else{
-//			
-//			System.out.println(BOLD + "Bond: " + ANSI_RESET + ANSI_GREEN + "High" + ANSI_RESET);
-//		}
-//
-//		System.out.println("                    " + UNDERLINED + "Items" + ANSI_RESET);
+		System.out.println(characterList.get(cha).getName());
+		
+		if(characterList.get(cha).getBond() == 0) {
+			
+			System.out.println(BOLD + "Bond: " + ANSI_RESET + ANSI_RED + "Low" + ANSI_RESET);
+		}else if(characterList.get(cha).getBond() == 1){
+			
+			System.out.println(BOLD + "Bond: " + ANSI_RESET + ANSI_MAGENTA + "Average" + ANSI_RESET);
+		}else{
+			
+			System.out.println(BOLD + "Bond: " + ANSI_RESET + ANSI_GREEN + "High" + ANSI_RESET);
+		}
+
+		System.out.println("                    " + UNDERLINED + "Items" + ANSI_RESET);
 		
 		int counter = 0;
 		ArrayList<MyObject> mine = new ArrayList<MyObject>();
@@ -171,21 +238,21 @@ public class Runner2 {
 		
 		//Crew
 		characterList.add(new Character(ANSI_CYAN + "Ticket CLerk" + ANSI_RESET, "Unknown", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 16, 0));
-		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 3, 0));
-		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 5, 0));
-		characterList.add(new Character(ANSI_CYAN + "Stewardess" + ANSI_RESET, "Unknown", 3, 0));
-		characterList.add(new Character(ANSI_CYAN + "Cook" + ANSI_RESET, "Unknown", 2, 0));
+		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Stewardess" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Cook" + ANSI_RESET, "Unknown", 0, 0));
 		
 		//Passengers
-		characterList.add(new Character(ANSI_CYAN + "Doctor" + ANSI_RESET, "Valentine Booth", 4, 0));
-		characterList.add(new Character(ANSI_CYAN + "Clown" + ANSI_RESET, "Bam Bam", 3, 0));
-		characterList.add(new Character(ANSI_CYAN + "Author" + ANSI_RESET, "Harper Greene", 3, 0));
-		characterList.add(new Character(ANSI_CYAN + "Clown Prosecutor" + ANSI_RESET, "Rosalind Francis", 4, 0));
-		characterList.add(new Character(ANSI_CYAN + "Rich Dude" + ANSI_RESET, "Leonard Hill", 4, 0));
-		characterList.add(new Character(ANSI_CYAN + "Butler" + ANSI_RESET, "Horace Armstrong", 4, 0));
+		characterList.add(new Character(ANSI_CYAN + "Doctor" + ANSI_RESET, "Valentine Booth", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Clown" + ANSI_RESET, "Bam Bam", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Author" + ANSI_RESET, "Harper Greene", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Clown Prosecutor" + ANSI_RESET, "Rosalind Francis", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Rich Dude" + ANSI_RESET, "Leonard Hill", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Butler" + ANSI_RESET, "Horace Armstrong", 0, 0));
 		
-		characterList.add(new Character(ANSI_CYAN + "Ghost" + ANSI_RESET, "George Washington", 6, 0));
+		characterList.add(new Character(ANSI_CYAN + "Ghost" + ANSI_RESET, "George Washington", 0, 0));
 		
 	}
 	
@@ -277,22 +344,20 @@ public class Runner2 {
 		System.out.println("Hello! If you would like to buy a train ticket, please enter your name.");
 		String name = userInput.nextLine();
 		player = new Player(name, 200, 0);
+		System.out.println("Sign here.");
+		enter = userInput.nextLine();
+		System.out.println("And here.");
+		enter = userInput.nextLine();
+		System.out.println("And here.");
+		enter = userInput.nextLine();
+		System.out.println("Your social security number here-");
+		enter = userInput.nextLine();
+		System.out.println("Thank you! Have a nice day.");
 	}
 
 	public static String padRight(String s, int n) {
 	     return String.format("%-" + n + "s", s);  
 	}
 	
-	public static void intro(){
-		
-		System.out.println(characterList.get(0).getName() + ": Welcome to the waiting room! I hope you will enjoy our humble little train.");
-		System.out.println(characterList.get(0).getName() + ": Lots of characters on today's ride, that's for sure...");
-		System.out.println();
-		
-		boolean exploring = true;
-		while(exploring){
-				
-		}
-	}
-
+	
 }

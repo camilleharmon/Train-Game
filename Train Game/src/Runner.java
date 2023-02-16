@@ -66,7 +66,7 @@ public class Runner {
 
 	public static void intro() {
 		
-//		charDisplay(0);
+		charDisplay(0);
 		System.out.println(ANSI_CYAN + "Welcome to the waiting room! I hope you will enjo your ride upon our humble little train." + ANSI_CYAN);
 		enter = userInput.nextLine();
 		System.out.println(ANSI_CYAN + "You are welcome to look around, lots of interesting characters on the ride today" + ANSI_CYAN);
@@ -79,19 +79,30 @@ public class Runner {
 		
 		displayRoom();
 		System.out.println("What would you like to do?");
-		System.out.println("1) Right Door");
-		System.out.println("2) Left Door");
-		System.out.println("3) " +  board.get(10).getName());
-		System.out.println("4) " +  board.get(11).getName());
-		System.out.println("5) " +  board.get(12).getName());
-		System.out.println("6) " +  board.get(13).getName());
+		System.out.println("1) " + board.get(2).getName());
+		System.out.println("2) " + board.get(4).getName());
+		System.out.println("3) " + board.get(10).getName());
+		System.out.println("4) " + board.get(11).getName());
+		System.out.println("5) " + board.get(12).getName());
+		System.out.println("6) " + board.get(13).getName());
 		int choice = userIntInput.nextInt();
 		
 		switch(choice)
 		{
-		case 2:
+		case 1:
 				{
 					kitchen();
+					break;
+				}
+		case 2:
+				{
+					if(board.get(10).isUnlocked()) {
+						
+						firstClass();
+					}else {
+						
+						mainCar();
+					}
 					break;
 				}
 		case 3:
@@ -114,7 +125,7 @@ public class Runner {
 				{
 					if(board.get(10).isUnlocked()) {
 						
-						clownRoom();
+						writerRoom();
 					}else {
 						
 						mainCar();
@@ -125,7 +136,53 @@ public class Runner {
 				{
 					if(board.get(10).isUnlocked()) {
 						
-						clownRoom();
+						prosecutorRoom();
+					}else {
+						
+						mainCar();
+					}
+					break;
+				}
+		default:
+				{
+					mainCar();
+				}
+		}	
+	}
+	
+	public static void firstClass() {
+		
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(3).getName());
+		System.out.println("2) " + board.get(5).getName());
+		System.out.println("3) " + board.get(14).getName());
+		System.out.println("4) " + board.get(15).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 2:
+				{
+					engine();
+					break;
+				}
+		case 3:
+				{
+					if(board.get(14).isUnlocked()) {
+						
+						leoRoom();
+					}else {
+						
+						mainCar();
+					}
+					break;
+				}
+		case 6:
+				{
+					if(board.get(15).isUnlocked()) {
+						
+						docRoom();
 					}else {
 						
 						mainCar();
@@ -135,6 +192,49 @@ public class Runner {
 		default:
 				{
 					firstClass();
+				}
+		}	
+	}
+	
+	public static void engine() {
+		
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(3).getName());
+		System.out.println("2) " + board.get(16).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 2:
+				{
+					driveCompart();
+					break;
+				}
+		default:
+				{
+					engine();
+				}
+		}	
+	}
+	
+	public static void driveCompart() {
+		
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(3).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 2:
+				{
+					engine();
+					break;
+				}
+		default:
+				{
+					driveCompart();
 				}
 		}	
 	}

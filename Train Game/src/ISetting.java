@@ -10,4 +10,9 @@ public interface ISetting {
 	public boolean isUnlocked();
 
 	public void setUnlocked(boolean unlocked);
+
+	public void setName(String name);
+	
+	public void setDay(int day);
+
 }

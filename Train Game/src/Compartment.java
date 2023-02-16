@@ -3,9 +3,10 @@ public class Compartment extends Setting{
 
 	protected boolean unlocked;
 	
-	public Compartment(String n, int d, boolean u, String dd)
+	public Compartment(String n, int nu, int d, boolean u, String dd)
 		{
 			name = n;
+			num = nu;
 			day = d;
 			unlocked = u;
 			description = dd;

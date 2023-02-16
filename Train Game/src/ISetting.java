@@ -6,4 +6,8 @@ public interface ISetting {
 	public int getDay();
 	
 	public String getDescription();
+	
+	public boolean isUnlocked();
+
+	public void setUnlocked(boolean unlocked);
 }

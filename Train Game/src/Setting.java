@@ -2,8 +2,10 @@
 public class Setting implements ISetting{
 	
 	protected String name;
+	protected int num;
 	protected int day;
 	protected String description;
+	protected boolean unlocked;
 	
 	Setting()
 	{
@@ -34,6 +36,14 @@ public class Setting implements ISetting{
 		{
 			this.description = description;
 		}
+	public boolean isUnlocked()
+	{
+		return unlocked;
+	}
 
+	public void setUnlocked(boolean unlocked)
+	{
+		this.unlocked = unlocked;
+	}
 
 }

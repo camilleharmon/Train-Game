@@ -2,9 +2,13 @@ import java.io.IOException;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import java.util.*;
 
-public class Runner2 {
+public class Runner {
 
 	static ArrayList <ISetting> board = new ArrayList<ISetting>();
 	static ArrayList <MyObject> objects = new ArrayList<MyObject>();
@@ -17,6 +21,12 @@ public class Runner2 {
 	static Scanner userIntInput = new Scanner(System.in);
 	static Scanner userInput = new Scanner(System.in);
 	static String enter;
+	
+	private static final long serialVersionUID = 1L;
+	static JFrame frame = new JFrame();
+	
+	int choice = 1;
+	static String choice2 = "";
 	
 	public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
@@ -48,9 +58,10 @@ public class Runner2 {
 		fillCharacters();
 		fillObjects();
 		fillBoard();
-		charDisplay(22);
+		//charDisplay(22);
 		makePlayer();
 		displayRoom();
+		intro();
 
 	}
 //	public static void gameOn() {
@@ -101,12 +112,50 @@ public class Runner2 {
 //	}
 //	
 	
+	public static void mainCar(){
+		
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) Left Door");
+		System.out.println("1) Left Door");
+		
+		switch(choice)
+		{
+		case 0:
+				{
+					bedroom();
+					break;
+				}
+		case 1:
+				{
+					hall();
+					break;
+				}
+		case 2:
+				{
+					lawn();
+					break;
+				}
+		}	
+	}
+	
 	public static void displayRoom() {
 
+//		Object[] options = {"Left Door", "Right Door", "Room 1", "My Room", "Room 3", "Room 4"};
+//		choice = JOptionPane.showOptionDialog(
+//				frame, 
+//				ListLocations.locations.get(0).getDescription(),
+//				ListLocations.locations.get(0).getName(),
+//				JOptionPane.YES_NO_CANCEL_OPTION,
+//				JOptionPane.QUESTION_MESSAGE,
+//				null, 
+//				options, 
+//				options);
+		
 	    System.out.println("You are in: " + board.get(player.getLocation()).getName());
 	    System.out.println("It is day " + board.get(player.getLocation()).getDay());
 	    System.out.println(board.get(player.getLocation()).getDescription());
-	    System.out.println("These people are in the room:");
+	    System.out.println("People in the room:");
 
 //	    for(Character c : characterList){
 //	        if(c.getLocation() == player.getLocation()) {
@@ -186,6 +235,7 @@ public class Runner2 {
 	
 	public static void charDisplay(int cha) {
 		
+		System.out.println("---------------------------------------");
 		System.out.println(characterList.get(cha).getName());
 		
 		if(characterList.get(cha).getBond() == 0) {
@@ -232,27 +282,29 @@ public class Runner2 {
 			System.out.println("No items owned");
 		}
 		System.out.println("");
+		
+		
 	}
 	
 	public static void fillCharacters() {
 		
 		//Crew
 		characterList.add(new Character(ANSI_CYAN + "Ticket CLerk" + ANSI_RESET, "Unknown", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Stewardess" + ANSI_RESET, "Unknown", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Cook" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 16, 0));
+		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 3, 0));
+		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 5, 0));
+		characterList.add(new Character(ANSI_CYAN + "Stewardess" + ANSI_RESET, "Unknown", 3, 0));
+		characterList.add(new Character(ANSI_CYAN + "Cook" + ANSI_RESET, "Unknown", 2, 0));
 		
 		//Passengers
-		characterList.add(new Character(ANSI_CYAN + "Doctor" + ANSI_RESET, "Valentine Booth", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Clown" + ANSI_RESET, "Bam Bam", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Author" + ANSI_RESET, "Harper Greene", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Clown Prosecutor" + ANSI_RESET, "Rosalind Francis", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Rich Dude" + ANSI_RESET, "Leonard Hill", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Butler" + ANSI_RESET, "Horace Armstrong", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Doctor" + ANSI_RESET, "Valentine Booth", 4, 0));
+		characterList.add(new Character(ANSI_CYAN + "Clown" + ANSI_RESET, "Bam Bam", 3, 0));
+		characterList.add(new Character(ANSI_CYAN + "Author" + ANSI_RESET, "Harper Greene", 3, 0));
+		characterList.add(new Character(ANSI_CYAN + "Clown Prosecutor" + ANSI_RESET, "Rosalind Francis", 4, 0));
+		characterList.add(new Character(ANSI_CYAN + "Rich Dude" + ANSI_RESET, "Leonard Hill", 4, 0));
+		characterList.add(new Character(ANSI_CYAN + "Butler" + ANSI_RESET, "Horace Armstrong", 4, 0));
 		
-		characterList.add(new Character(ANSI_CYAN + "Ghost" + ANSI_RESET, "George Washington", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Ghost" + ANSI_RESET, "George Washington", 6, 0));
 		
 	}
 	
@@ -318,15 +370,15 @@ public class Runner2 {
 		board.add(new Boxcar("Engine", 0, "It is so hot in this room. It feels like there is a portal to the pits of hell here. But if you want to burn, I say do it!"));
 		board.add(new Boxcar("The Driving Compartment", 0, "Do you want to make the sound? Come on pull the lever. Make the train whistle. Nothing else to do here."));
 		//Compartments
-		board.add(new Compartment("???", 0, false, "You are in a large white wall room with items from the Revolutionary War littered around it. You have no idea how there is room for this room on the train but it doesn't seem to care how so you won't either."));
-		board.add(new Compartment("Outside", 0, true, "You step out onto the balcony at the end of the train. As the wind whistles past your ears you begin to feel uneasy, imagining that you might fall off and go for a tumble. Maybe you should head back inside."));
-		board.add(new Compartment("Bathroom", 0, false, "It is a small bathroom with barely enough room for you to stretch out your arms. There is a single square of toilet paper on the roll. You decide it's best to go later."));
-		board.add(new Compartment("Pantry", 0, false, "The moment you step in the room your nose gets hit by the scent of a hundred spices. You don't know how you know there are exactly a hundred spices, but they sure are strong!"));
-		board.add(new Compartment("Bam Bam's Room", 0, false, "A lot of tomfoolery seems to have happened in this room. The floor seems to be on the ceiling and the ceiling seems to be on the floor. There a a number of brightly colored bags on the floor."));
+		board.add(new Compartment("???", 0, false, "You are in a large white wall room with items from the Revolutionary War littered around it. You have no idea how there is room for \nthis room on the train but it doesn't seem to care how so you won't either."));
+		board.add(new Compartment("Outside", 0, true, "You step out onto the balcony at the end of the train. As the wind whistles past your ears you begin to feel uneasy, \nimagining that you might fall off and go for a tumble. Maybe you should head back inside."));
+		board.add(new Compartment("Bathroom", 0, false, "It is a small bathroom with barely enough room for you to stretch out your arms. There is a single square of toilet paper on the roll. \nYou decide it's best to go later."));
+		board.add(new Compartment("Pantry", 0, false, "The moment you step in the room your nose gets hit by the scent of a hundred spices. \nYou don't know how you know there are exactly a hundred spices, but they sure are strong!"));
+		board.add(new Compartment("Bam Bam's Room", 0, false, "A lot of tomfoolery seems to have happened in this room. The floor seems to be on the ceiling and the ceiling seems to be on the floor. \nThere a a number of brightly colored bags on the floor."));
 		board.add(new Compartment("My Room", 0, true, "Your room is small but clean. The bed looks cozy, the suitcase is neat, and the mice in the wall are comfortable. Wait, there's mice-?!"));
 		board.add(new Compartment("Harper Greene's Room", 0, false, "This room is cozy and warm. It makes you want to curl up with a book and read."));
 		board.add(new Compartment("Rosalind Francis' Room", 0, false, "This room is just as small as the others, case files litter the floor and a big poster of a clown wih a red 'X' is taped to the wall."));
-		board.add(new Compartment("The Room of Leonard Hill (and Horace, but he doesnt matter)", 0, false, "This room appears to be made of marble, which doesn't surprise you since this is Leonard's Room... and Horace's too I guess. A number a stuffed animals make a pile in the corner."));
+		board.add(new Compartment("The Room of Leonard Hill (and Horace, but he doesnt matter)", 0, false, "This room appears to be made of marble, which doesn't surprise you since this is Leonard's Room... and Horace's too I guess. \nA number a stuffed animals make a pile in the corner."));
 		board.add(new Compartment("Valentine Booth's Room", 0, false, "Why did the matress go to the doctor? It had spring fever. No, but seriously, this is the bounciest bed I've ever seen."));
 		
 		try {
@@ -353,6 +405,17 @@ public class Runner2 {
 		System.out.println("Your social security number here-");
 		enter = userInput.nextLine();
 		System.out.println("Thank you! Have a nice day.");
+	}
+	
+	public static void intro() {
+		
+//		charDisplay(0);
+		System.out.println(ANSI_CYAN + "Welcome to the waiting room! I hope you will enjo your ride upon our humble little train." + ANSI_CYAN);
+		enter = userInput.nextLine();
+		System.out.println(ANSI_CYAN + "You are welcome to look around, lots of interesting characters on the ride today" + ANSI_CYAN);
+		enter = userInput.nextLine();
+		
+		
 	}
 
 	public static String padRight(String s, int n) {

@@ -171,21 +171,21 @@ public class Runner2 {
 		
 		//Crew
 		characterList.add(new Character(ANSI_CYAN + "Ticket CLerk" + ANSI_RESET, "Unknown", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Stewardess" + ANSI_RESET, "Unknown", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Cook" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 16, 0));
+		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 3, 0));
+		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 5, 0));
+		characterList.add(new Character(ANSI_CYAN + "Stewardess" + ANSI_RESET, "Unknown", 3, 0));
+		characterList.add(new Character(ANSI_CYAN + "Cook" + ANSI_RESET, "Unknown", 2, 0));
 		
 		//Passengers
-		characterList.add(new Character(ANSI_CYAN + "Doctor" + ANSI_RESET, "Valentine Booth", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Clown" + ANSI_RESET, "Bam Bam", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Author" + ANSI_RESET, "Harper Greene", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Clown Prosecutor" + ANSI_RESET, "Rosalind Francis", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Rich Dude" + ANSI_RESET, "Leonard Hill", 0, 0));
-		characterList.add(new Character(ANSI_CYAN + "Butler" + ANSI_RESET, "Horace Armstrong", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Doctor" + ANSI_RESET, "Valentine Booth", 4, 0));
+		characterList.add(new Character(ANSI_CYAN + "Clown" + ANSI_RESET, "Bam Bam", 3, 0));
+		characterList.add(new Character(ANSI_CYAN + "Author" + ANSI_RESET, "Harper Greene", 3, 0));
+		characterList.add(new Character(ANSI_CYAN + "Clown Prosecutor" + ANSI_RESET, "Rosalind Francis", 4, 0));
+		characterList.add(new Character(ANSI_CYAN + "Rich Dude" + ANSI_RESET, "Leonard Hill", 4, 0));
+		characterList.add(new Character(ANSI_CYAN + "Butler" + ANSI_RESET, "Horace Armstrong", 4, 0));
 		
-		characterList.add(new Character(ANSI_CYAN + "Ghost" + ANSI_RESET, "George Washington", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Ghost" + ANSI_RESET, "George Washington", 6, 0));
 		
 	}
 	
@@ -243,25 +243,24 @@ public class Runner2 {
 		System.out.println("");
 		
 		//Boxcars
-				board.add(new Boxcar("Intro", 0, "You are in an incomprehensible void while waiting for the train. The appearence of the room is constantly changing. \nYou may be able to talk to people and collect objects while waiting for the train's harrowing call."));
-				board.add(new Boxcar("Caboose", 0, "You are in the back of the train. There is not much to see here, but there may be secrets to unlock."));
-				board.add(new Boxcar("Kitchen", 0, "You are in the kitchen. You smell the wonderful smell of carmalizing carrots, but what else could lie under the spices?"));
-				board.add(new Boxcar("Main", 0, "Everyone gathers in the main room for conversations, but what could you access from her?"));
-				board.add(new Boxcar("First Class", 0, "Do you really want to sit with snobs like these? Here sit people who pay money to simply sit on nicer fabric. \nBut money brings allies so do with them what you will."));
-				board.add(new Boxcar("Engine", 0, "It is so hot in this room. It feels like there is a portal to the pits of hell here. But if you want to burn, I say do it!"));
-				//Compartments
-				board.add(new Compartment("???", 0, false));
-				board.add(new Compartment("Outside", 0, false));
-				board.add(new Compartment("Bathroom", 0, false));
-				board.add(new Compartment("Pantry", 0, false));
-				board.add(new Compartment("Bam Bam's Room", 0, false));
-				board.add(new Compartment("My Room", 0, true));
-				board.add(new Compartment("Harper Greene's Room", 0, false));
-				board.add(new Compartment("Rosalind Francis' Room", 0, false));
-				board.add(new Compartment("The Room of Leonard Hill (and Horace, but he doesnt matter)", 0, false));
-				board.add(new Compartment("Valentine Booth's Room", 0, false));
-				//One more boxcar
-				board.add(new Boxcar("The Driving Compartment", 0, "Do you want to make the sound? Come on pull the lever. Make the train whistle. Nothing else to do here."));
+		board.add(new Boxcar("Intro", 0, "You are in an incomprehensible void while waiting for the train. The appearence of the room is constantly changing. You may be able to talk to people and collect objects while waiting for the train's harrowing call."));
+		board.add(new Boxcar("Caboose", 0, "You are in the back of the train. There is not much to see here, but there may be secrets to unlock."));
+		board.add(new Boxcar("Kitchen", 0, "You are in the kitchen. You smell the wonderful smell of carmalizing carrots, but what else could lie under the spices?"));
+		board.add(new Boxcar("Main", 0, "Everyone gathers in the main room for conversations, but what could you access from her?"));
+		board.add(new Boxcar("First Class", 0, "Do you really want to sit with snobs like these? Here sit people who pay money to simply sit on nicer fabric. \nBut money brings allies so do with them what you will."));
+		board.add(new Boxcar("Engine", 0, "It is so hot in this room. It feels like there is a portal to the pits of hell here. But if you want to burn, I say do it!"));
+		board.add(new Boxcar("The Driving Compartment", 0, "Do you want to make the sound? Come on pull the lever. Make the train whistle. Nothing else to do here."));
+		//Compartments
+		board.add(new Compartment("???", 0, false, "You are in a large white wall room with items from the Revolutionary War littered around it. You have no idea how there is room for this room on the train but it doesn't seem to care how so you won't either."));
+		board.add(new Compartment("Outside", 0, true, "You step out onto the balcony at the end of the train. As the wind whistles past your ears you begin to feel uneasy, imagining that you might fall off and go for a tumble. Maybe you should head back inside."));
+		board.add(new Compartment("Bathroom", 0, false, "It is a small bathroom with barely enough room for you to stretch out your arms. There is a single square of toilet paper on the roll. You decide it's best to go later."));
+		board.add(new Compartment("Pantry", 0, false, "The moment you step in the room your nose gets hit by the scent of a hundred spices. You don't know how you know there are exactly a hundred spices, but they sure are strong!"));
+		board.add(new Compartment("Bam Bam's Room", 0, false, "A lot of tomfoolery seems to have happened in this room. The floor seems to be on the ceiling and the ceiling seems to be on the floor. There a a number of brightly colored bags on the floor."));
+		board.add(new Compartment("My Room", 0, true, "Your room is small but clean. The bed looks cozy, the suitcase is neat, and the mice in the wall are comfortable. Wait, there's mice-?!"));
+		board.add(new Compartment("Harper Greene's Room", 0, false, "This room is cozy and warm. It makes you want to curl up with a book and read."));
+		board.add(new Compartment("Rosalind Francis' Room", 0, false, "This room is just as small as the others, case files litter the floor and a big poster of a clown wih a red 'X' is taped to the wall."));
+		board.add(new Compartment("The Room of Leonard Hill (and Horace, but he doesnt matter)", 0, false, "This room appears to be made of marble, which doesn't surprise you since this is Leonard's Room... and Horace's too I guess. A number a stuffed animals make a pile in the corner."));
+		board.add(new Compartment("Valentine Booth's Room", 0, false, "Why did the matress go to the doctor? It had spring fever. No, but seriously, this is the bounciest bed I've ever seen."));
 		
 		try {
 			Thread.sleep(200);
@@ -286,8 +285,8 @@ public class Runner2 {
 	
 	public static void intro(){
 		
-		System.out.println(characterList.get(2).getName() + ": Welcome to the waiting room! I hope you will enjoy our humble little train.");
-		System.out.println(characterList.get(2).getName() + ": Lots of characters on today's ride, that's for sure");
+		System.out.println(characterList.get(0).getName() + ": Welcome to the waiting room! I hope you will enjoy our humble little train.");
+		System.out.println(characterList.get(0).getName() + ": Lots of characters on today's ride, that's for sure...");
 		System.out.println();
 		
 		boolean exploring = true;

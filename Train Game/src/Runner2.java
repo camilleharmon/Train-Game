@@ -82,13 +82,11 @@ public class Runner2 {
 		
 		while(exploring){
 			
-				System.out.println(ANSI_RESET + "Would you like to: \n   1) Explore\n   2) Board the train");
+				System.out.println("Would you like to: \n   1) Explore\n   2) Board the train");
 				
 				int answer = userIntInput.nextInt();
 				
 				if(answer == 1){
-						System.out.println(ANSI_CYAN + "I'm glad you decided to look around!" + ANSI_RESET);
-						enter = userInput.nextLine();
 						System.out.println("Would you like to: \n   1) Talk to the conductor\n   2) Look in the box marked " + ANSI_RED + "SECRET" + ANSI_RESET + " \n   3) Run in a circle");
 						answer = userIntInput.nextInt();
 						
@@ -97,7 +95,7 @@ public class Runner2 {
 									enter = userInput.nextLine();
 						}
 						else if(answer == 2){
-									System.out.println("A bunch of moths fly in your face. There is nothing in this box, and there hasn't been for a while");
+									System.out.println("A bunch of moths fly in your face. There is nothing in this box, and there hasn't been anything there for a while.");
 									enter = userInput.nextLine();
 						}
 						else if(answer == 3){
@@ -220,7 +218,13 @@ public class Runner2 {
 		}	
 	}
 	
-	
+	public static void charResponse(int index){
+		
+		switch(index)
+		{
+			case 0: 
+		}
+	}
 	public static void displayRoom() {
 
 //		Object[] options = {"Left Door", "Right Door", "Room 1", "My Room", "Room 3", "Room 4"};

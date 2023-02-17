@@ -16,6 +16,11 @@ public class Runner2 {
 	static boolean game = true;
 
 	static Player player;
+	
+	//added player inventory
+	static ArrayList <MyObject> inventory = new ArrayList<MyObject>();
+	//
+	
 	static int cha = 0;
 	static Scanner userIntInput = new Scanner(System.in);
 	static Scanner userInput = new Scanner(System.in);
@@ -63,29 +68,92 @@ public class Runner2 {
 		intro();
 	}
 
+	//finished entire intro
 	public static void intro() {
 		
 		charDisplay(0);
-		System.out.println(ANSI_CYAN + "Welcome to the waiting room! I hope you will enjoy your ride upon our humble little train." + ANSI_CYAN);
+		System.out.println(ANSI_CYAN + "Welcome to the waiting room! I hope you will enjoy your ride upon our humble little train.");
 		enter = userInput.nextLine();
-		System.out.println(ANSI_CYAN + "You are welcome to look around, lots of interesting characters on the ride today" + ANSI_CYAN);
+		System.out.println("You are welcome to look around, lots of interesting characters on the ride today." + ANSI_RESET);
 		enter = userInput.nextLine();
 		
 		boolean exploring = true;
+		int ring = 0;
 		
 		while(exploring){
 			
-				System.out.println("Would you like to: \n   1) Explore\n    2) Board the train");
+				System.out.println(ANSI_RESET + "Would you like to: \n   1) Explore\n   2) Board the train");
 				
-				int answer = userIntInput();
+				int answer = userIntInput.nextInt();
 				
-				if(answer == 1)
-					{
+				if(answer == 1){
+						System.out.println(ANSI_CYAN + "I'm glad you decided to look around!" + ANSI_RESET);
+						enter = userInput.nextLine();
+						System.out.println("Would you like to: \n   1) Talk to the conductor\n   2) Look in the box marked " + ANSI_RED + "SECRET" + ANSI_RESET + " \n   3) Run in a circle");
+						answer = userIntInput.nextInt();
 						
+						if(answer == 1){
+									System.out.println(ANSI_CYAN + "I really have nothing more to say to you" + ANSI_RESET);
+									enter = userInput.nextLine();
+						}
+						else if(answer == 2){
+									System.out.println("A bunch of moths fly in your face. There is nothing in this box, and there hasn't been for a while");
+									enter = userInput.nextLine();
+						}
+						else if(answer == 3){
+							
+							if(ring == 5)
+								{
+									System.out.println("Running in a circle five times has made a small portal open up in front of you...");
+									enter = userInput.nextLine();
+									System.out.println("You reach in and pull out an engagement ring!");
+									enter = userInput.nextLine();
+									inventory.add(objects.get(11));
+									System.out.println(ANSI_RED + "YOU HAVE ADDED ~ ENGAGEMENT RING ~ TO YOUR INVENTORY" + ANSI_RESET);
+									enter = userInput.nextLine();
+								}
+							else
+								{
+									System.out.println("You run in a circle.");
+									ring++;
+									enter = userInput.nextLine();
+								}
+						}
+						else
+								{
+									System.out.println("Well that's not an answer you silly goose!");
+									enter = userInput.nextLine();
+								}
+						}
+				else if(answer == 2){
+						System.out.println(ANSI_CYAN + "Have a good ride!" + ANSI_RESET);
+						
+						enter = userInput.nextLine();
+						System.out.print("Boarding Train");
+						for(int i = 0; i < 3; i++) {
+							
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							System.out.print(".");
+						}
+						System.out.println("");
+						
+						exploring = false;
+					}
+				else{
+						System.out.println("Yeah dude that's not an option");
+						enter = userInput.nextLine();
 					}
 			}
-		player.setLocation(1);
+		player.setLocation(3);
 		board.get(0).setName("Do you really want to jump out of a window bro? Really?");
+		
+		System.out.println("---------------------------------------");
+		displayRoom();
 	}
 	
 	public static void mainCar(){
@@ -151,6 +219,7 @@ public class Runner2 {
 				}
 		}	
 	}
+	
 	
 	public static void displayRoom() {
 
@@ -300,7 +369,10 @@ public class Runner2 {
 	public static void fillCharacters() {
 		
 		//Crew
-		characterList.add(new Character(ANSI_CYAN + "Ticket CLerk" + ANSI_RESET, "Unknown", 0, 0));
+		
+		//fixed clerk spelling
+		characterList.add(new Character(ANSI_CYAN + "Ticket Clerk" + ANSI_RESET, "Unknown", 0, 0));
+		//
 		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 16, 0));
 		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 3, 0));
 		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 5, 0));
@@ -376,7 +448,7 @@ public class Runner2 {
 		board.add(new Boxcar("Intro", 0, 0, "You are in an incomprehensible void while waiting for the train. The appearence of the room is constantly changing. You may be able to talk to people and collect objects while waiting for the train's harrowing call."));
 		board.add(new Boxcar("Caboose", 1, 0, "You are in the back of the train. There is not much to see here, but there may be secrets to unlock."));
 		board.add(new Boxcar("Kitchen", 2, 0, "You are in the kitchen. You smell the wonderful smell of carmalizing carrots, but what else could lie under the spices?"));
-		board.add(new Boxcar("Main", 3, 0, "Everyone gathers in the main room for conversations, but what could you access from her?"));
+		board.add(new Boxcar("Main", 3, 0, "Everyone gathers in the main room for conversations, but what could you access from here?"));
 		board.add(new Boxcar("First Class", 4, 0, "Do you really want to sit with snobs like these? Here sit people who pay money to simply sit on nicer fabric. \nBut money brings allies so do with them what you will."));
 		board.add(new Boxcar("Engine", 5, 0, "It is so hot in this room. It feels like there is a portal to the pits of hell here. But if you want to burn, I say do it!"));
 		

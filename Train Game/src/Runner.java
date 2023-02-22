@@ -64,83 +64,6 @@ public class Runner {
 
 	}
 	
-	public static void charResponse(int index){
-		
-		switch(index)
-		{
-			
-			case 1: System.out.println(ANSI_BLUE + "Choo Choooooooooooooooooo. I like twains." + ANSI_RESET);
-					enter = userInput.nextLine();
-					break;
-			case 2: System.out.println(ANSI_BLUE + "You seem like a rather amiable fellow. I'm glad for your presence on my humble little train. \nNothing secret here at all..." + ANSI_RESET);
-					enter = userInput.nextLine();
-					break;
-			case 3: System.out.println(ANSI_BLUE + "Do you know what it's like down here. All alone.");
-					enter = userInput.nextLine();
-					System.out.println("Only living for the ebb and flow of pulling the brake.");
-					enter = userInput.nextLine();
-					System.out.println(" I am trapped here for eternity. There is no one who loves me.");
-					enter = userInput.nextLine();
-					System.out.println("If only the bathroom was unlocked" + ANSI_RESET);
-					break;
-			case 4: System.out.println(ANSI_BLUE + "Please you HAVE to get me away from Leonard. He really is a gross man-child" + ANSI_RESET);
-					enter = userInput.nextLine();
-					break;
-			case 5: System.out.println(ANSI_BLUE + "Cook. Cook. Cook. I do love the smell of" + ANSI_RED + " blood " + ANSI_BLUE +  "in the morning." + ANSI_RESET);
-					enter = userInput.nextLine();
-					break;
-			case 6: System.out.println(ANSI_BLUE + "Do you have any medical needs? I'd be happy to help!" + ANSI_RESET);
-					enter = userInput.nextLine();
-					break;
-			case 7: System.out.println(ANSI_BLUE + "Honk Honk!" + ANSI_RESET);
-					enter = userInput.nextLine();
-					System.out.println("You get sprayed with water like a cat. The clown bounces bouncily away.");
-					enter = userInput.nextLine();
-					break;
-			case 8: shakespeare();
-					enter = userInput.nextLine();
-					System.out.println("They don't seem to be doing much work.");
-					enter = userInput.nextLine();
-					break;
-			case 9: System.out.println();
-					break;
-			case 10: System.out.println();
-					break;
-			case 11: System.out.println();
-					break;
-			case 12: System.out.println();
-					break;
-			case 13: System.out.println();
-					break;
-			case 14: System.out.println();
-					break;
-			case 15: System.out.println();
-					break;
-			
-		}
-	}
-	
-	public static String shakespeare()
-		{
-			String shakespeare = "";
-			int random = (int)(Math.random()*4);
-			
-			switch(random)
-			{
-				case 0: shakespeare = "Is this a dagger which I see before me, the handle toward my hand?";
-						break;
-				case 1: shakespeare = "Cry “havoc!” and let slip the dogs of war";
-						break;
-				case 2: shakespeare = "Full fathom five thy father lies, of his bones are coral made. Those are pearls that were his eyes. \nNothing of him that doth fade, but doth suffer a sea-change into something rich and strange.";
-						break;
-				case 3: shakespeare = "A horse! a horse! my kingdom for a horse!";
-						break;
-				default: shakespeare = "If you prick us, do we not bleed? If you tickle us, do we not laugh? If you poison us, do we not die? And if you wrong us, shall we not revenge?";
-						break;
-			}
-			return shakespeare; 
-		}
-	
 	public static void mainCar(){
 		
 		player.setLocation(3);
@@ -173,7 +96,8 @@ public class Runner {
 						
 						clownRoom();
 					}else {
-						
+
+						System.out.println(ANSI_MAGENTA + "This room is locked." + ANSI_RESET);
 						mainCar();
 					}
 					break;
@@ -189,7 +113,8 @@ public class Runner {
 						
 						writerRoom();
 					}else {
-						
+
+						System.out.println(ANSI_MAGENTA + "This room is locked." + ANSI_RESET);
 						mainCar();
 					}
 					break;
@@ -200,7 +125,8 @@ public class Runner {
 						
 						prosecRoom();
 					}else {
-						
+
+						System.out.println(ANSI_MAGENTA + "This room is locked." + ANSI_RESET);
 						mainCar();
 					}
 					break;
@@ -330,7 +256,8 @@ public class Runner {
 						
 						bathroom();
 					}else {
-						
+
+						System.out.println(ANSI_MAGENTA + "This room is locked." + ANSI_RESET);
 						kitchen();
 					}
 					break;
@@ -341,7 +268,8 @@ public class Runner {
 						
 						pantry();
 					}else {
-						
+
+						System.out.println(ANSI_MAGENTA + "This room is locked." + ANSI_RESET);
 						kitchen();
 					}
 					break;
@@ -425,7 +353,8 @@ public class Runner {
 						
 						mystery();
 					}else {
-						
+
+						System.out.println(ANSI_MAGENTA + "This room is locked." + ANSI_RESET);
 						caboose();
 					}
 					break;
@@ -510,7 +439,8 @@ public class Runner {
 						
 						leoRoom();
 					}else {
-						
+
+						System.out.println(ANSI_MAGENTA + "This room is locked." + ANSI_RESET);
 						firstClass();
 					}
 					break;
@@ -521,7 +451,8 @@ public class Runner {
 						
 						docRoom();
 					}else {
-						
+
+						System.out.println(ANSI_MAGENTA + "This room is locked." + ANSI_RESET);
 						firstClass();
 					}
 					break;
@@ -883,6 +814,83 @@ public class Runner {
 		characterList.add(new Character(ANSI_CYAN + "Ghost" + ANSI_RESET, "George Washington", 6, 0));
 		
 	}
+	
+	public static void charResponse(int index){
+		
+		switch(index)
+		{
+			
+			case 1: System.out.println(ANSI_BLUE + "Choo Choooooooooooooooooo. I like twains." + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 2: System.out.println(ANSI_BLUE + "You seem like a rather amiable fellow. I'm glad for your presence on my humble little train. \nNothing secret here at all..." + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 3: System.out.println(ANSI_BLUE + "Do you know what it's like down here. All alone.");
+					enter = userInput.nextLine();
+					System.out.println("Only living for the ebb and flow of pulling the brake.");
+					enter = userInput.nextLine();
+					System.out.println(" I am trapped here for eternity. There is no one who loves me.");
+					enter = userInput.nextLine();
+					System.out.println("If only the bathroom was unlocked" + ANSI_RESET);
+					break;
+			case 4: System.out.println(ANSI_BLUE + "Please you HAVE to get me away from Leonard. He really is a gross man-child" + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 5: System.out.println(ANSI_BLUE + "Cook. Cook. Cook. I do love the smell of" + ANSI_RED + " blood " + ANSI_BLUE +  "in the morning." + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 6: System.out.println(ANSI_BLUE + "Do you have any medical needs? I'd be happy to help!" + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 7: System.out.println(ANSI_BLUE + "Honk Honk!" + ANSI_RESET);
+					enter = userInput.nextLine();
+					System.out.println("You get sprayed with water like a cat. The clown bounces bouncily away.");
+					enter = userInput.nextLine();
+					break;
+			case 8: shakespeare();
+					enter = userInput.nextLine();
+					System.out.println("They don't seem to be doing much work.");
+					enter = userInput.nextLine();
+					break;
+			case 9: System.out.println();
+					break;
+			case 10: System.out.println();
+					break;
+			case 11: System.out.println();
+					break;
+			case 12: System.out.println();
+					break;
+			case 13: System.out.println();
+					break;
+			case 14: System.out.println();
+					break;
+			case 15: System.out.println();
+					break;
+			
+		}
+	}
+	
+	public static String shakespeare()
+		{
+			String shakespeare = "";
+			int random = (int)(Math.random()*4);
+			
+			switch(random)
+			{
+				case 0: shakespeare = "Is this a dagger which I see before me, the handle toward my hand?";
+						break;
+				case 1: shakespeare = "Cry “havoc!” and let slip the dogs of war";
+						break;
+				case 2: shakespeare = "Full fathom five thy father lies, of his bones are coral made. Those are pearls that were his eyes. \nNothing of him that doth fade, but doth suffer a sea-change into something rich and strange.";
+						break;
+				case 3: shakespeare = "A horse! a horse! my kingdom for a horse!";
+						break;
+				default: shakespeare = "If you prick us, do we not bleed? If you tickle us, do we not laugh? If you poison us, do we not die? And if you wrong us, shall we not revenge?";
+						break;
+			}
+			return shakespeare; 
+		}
 	
 	public static void fillObjects() {
 		

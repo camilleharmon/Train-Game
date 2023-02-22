@@ -222,17 +222,78 @@ public class Runner2 {
 		
 		switch(index)
 		{
-			case 1: System.out.println();
+			
+			case 1: System.out.println(ANSI_BLUE + "Choo Choooooooooooooooooo. I like twains." + ANSI_RESET);
+					enter = userInput.nextLine();
 					break;
-			case 2: System.out.println();
+			case 2: System.out.println(ANSI_BLUE + "You seem like a rather amiable fellow. I'm glad for your presence on my humble little train. \nNothing secret here at all..." + ANSI_RESET);
+					enter = userInput.nextLine();
 					break;
-			case 3: System.out.println();
+			case 3: System.out.println(ANSI_BLUE + "Do you know what it's like down here. All alone.");
+					enter = userInput.nextLine();
+					System.out.println("Only living for the ebb and flow of pulling the brake.");
+					enter = userInput.nextLine();
+					System.out.println(" I am trapped here for eternity. There is no one who loves me.");
+					enter = userInput.nextLine();
+					System.out.println("If only the bathroom was unlocked" + ANSI_RESET);
 					break;
-			case 4: System.out.println();
+			case 4: System.out.println(ANSI_BLUE + "Please you HAVE to get me away from Leonard. He really is a gross man-child" + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 5: System.out.println(ANSI_BLUE + "Cook. Cook. Cook. I do love the smell of" + ANSI_RED + " blood " + ANSI_BLUE +  "in the morning." + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 6: System.out.println(ANSI_BLUE + "Do you have any medical needs? I'd be happy to help!" + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 7: System.out.println(ANSI_BLUE + "Honk Honk!" + ANSI_RESET);
+					enter = userInput.nextLine();
+					System.out.println("You get sprayed with water like a cat. The clown bounces bouncily away.");
+					enter = userInput.nextLine();
+					break;
+			case 8: shakespeare();
+					enter = userInput.nextLine();
+					System.out.println("They don't seem to be doing much work.");
+					enter = userInput.nextLine();
+					break;
+			case 9: System.out.println();
+					break;
+			case 10: System.out.println();
+					break;
+			case 11: System.out.println();
+					break;
+			case 12: System.out.println();
+					break;
+			case 13: System.out.println();
+					break;
+			case 14: System.out.println();
+					break;
+			case 15: System.out.println();
 					break;
 			
 		}
 	}
+	
+	public static String shakespeare()
+		{
+			String shakespeare = "";
+			int random = (int)(Math.random()*4);
+			
+			switch(random)
+			{
+				case 0: shakespeare = "Is this a dagger which I see before me, the handle toward my hand?";
+						break;
+				case 1: shakespeare = "Cry “havoc!” and let slip the dogs of war";
+						break;
+				case 2: shakespeare = "Full fathom five thy father lies, of his bones are coral made. Those are pearls that were his eyes. \nNothing of him that doth fade, but doth suffer a sea-change into something rich and strange.";
+						break;
+				case 3: shakespeare = "A horse! a horse! my kingdom for a horse!";
+						break;
+				default: shakespeare = "If you prick us, do we not bleed? If you tickle us, do we not laugh? If you poison us, do we not die? And if you wrong us, shall we not revenge?";
+						break;
+			}
+			return shakespeare; 
+		}
 	public static void displayRoom() {
 
 //		Object[] options = {"Left Door", "Right Door", "Room 1", "My Room", "Room 3", "Room 4"};
@@ -465,8 +526,9 @@ public class Runner2 {
 		board.add(new Boxcar("Engine", 5, 0, "It is so hot in this room. It feels like there is a portal to the pits of hell here. But if you want to burn, I say do it!"));
 		
 		//Compartments
-		board.add(new Compartment("Outside", 6, 0, true, "You step out onto the balcony at the end of the train. As the wind whistles past your ears you begin to feel uneasy, \nimagining that you might fall off and go for a tumble. Maybe you should head back inside."));
-		board.add(new Compartment("???", 7, 0, false, "You are in a large white wall room with items from the Revolutionary War littered around it. You have no idea how there is room for \nthis room on the train but it doesn't seem to care how so you won't either."));
+		
+		board.add(new Compartment("???", 6, 0, false, "You are in a large white wall room with items from the Revolutionary War littered around it. You have no idea how there is room for \nthis room on the train but it doesn't seem to care how so you won't either."));
+		board.add(new Compartment("Outside", 7, 0, true, "You step out onto the balcony at the end of the train. As the wind whistles past your ears you begin to feel uneasy, \nimagining that you might fall off and go for a tumble. Maybe you should head back inside."));
 		board.add(new Compartment("Bathroom", 8, 0, false, "It is a small bathroom with barely enough room for you to stretch out your arms. There is a single square of toilet paper on the roll. \nYou decide it's best to go later."));
 		board.add(new Compartment("Pantry", 9, 0, false, "The moment you step in the room your nose gets hit by the scent of a hundred spices. \nYou don't know how you know there are exactly a hundred spices, but they sure are strong!"));
 		board.add(new Compartment("Bam Bam's Room", 10, 0, false, "A lot of tomfoolery seems to have happened in this room. The floor seems to be on the ceiling and the ceiling seems to be on the floor. \nThere a a number of brightly colored bags on the floor."));

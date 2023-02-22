@@ -60,8 +60,9 @@ public class Runner {
 		fillCharacters();
 		fillObjects();
 		fillBoard();
-		intro();
-
+		charResponse(12);
+		//intro();
+		
 	}
 	
 	public static void mainCar(){
@@ -796,7 +797,7 @@ public class Runner {
 	public static void fillCharacters() {
 		
 		//Crew
-		characterList.add(new Character(ANSI_CYAN + "Ticket CLerk" + ANSI_RESET, "Unknown", 0, 0));
+		characterList.add(new Character(ANSI_CYAN + "Ticket Clerk" + ANSI_RESET, "Unknown", 0, 0));
 		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 16, 0));
 		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 3, 0));
 		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 5, 0));
@@ -820,52 +821,77 @@ public class Runner {
 		switch(index)
 		{
 			
-			case 1: System.out.println(ANSI_BLUE + "Choo Choooooooooooooooooo. I like twains." + ANSI_RESET);
+			case 1: System.out.println(ANSI_CYAN + "Choo Choooooooooooooooooo. I like twains." + ANSI_RESET);
 					enter = userInput.nextLine();
 					break;
-			case 2: System.out.println(ANSI_BLUE + "You seem like a rather amiable fellow. I'm glad for your presence on my humble little train. \nNothing secret here at all..." + ANSI_RESET);
+			case 2: System.out.println(ANSI_CYAN + "You seem like a rather amiable fellow. I'm glad for your presence on my humble little train. \nNothing secret here at all..." + ANSI_RESET);
 					enter = userInput.nextLine();
 					break;
-			case 3: System.out.println(ANSI_BLUE + "Do you know what it's like down here. All alone.");
+			case 3: System.out.println(ANSI_CYAN + "Do you know what it's like down here. All alone." + ANSI_RESET);
 					enter = userInput.nextLine();
-					System.out.println("Only living for the ebb and flow of pulling the brake.");
+					System.out.println(ANSI_CYAN + "Only living for the ebb and flow of pulling the brake." + ANSI_RESET);
 					enter = userInput.nextLine();
-					System.out.println(" I am trapped here for eternity. There is no one who loves me.");
+					System.out.println(ANSI_CYAN + "I am trapped here for eternity. There is no one who loves me." + ANSI_RESET);
 					enter = userInput.nextLine();
-					System.out.println("If only the bathroom was unlocked" + ANSI_RESET);
+					System.out.println(ANSI_CYAN + "If only the bathroom was unlocked." + ANSI_RESET);
 					break;
-			case 4: System.out.println(ANSI_BLUE + "Please you HAVE to get me away from Leonard. He really is a gross man-child" + ANSI_RESET);
-					enter = userInput.nextLine();
-					break;
-			case 5: System.out.println(ANSI_BLUE + "Cook. Cook. Cook. I do love the smell of" + ANSI_RED + " blood " + ANSI_BLUE +  "in the morning." + ANSI_RESET);
+			case 4: System.out.println(ANSI_CYAN + "Please you HAVE to get me away from Leonard. He really is a gross man-child." + ANSI_RESET);
 					enter = userInput.nextLine();
 					break;
-			case 6: System.out.println(ANSI_BLUE + "Do you have any medical needs? I'd be happy to help!" + ANSI_RESET);
+			case 5: System.out.println(ANSI_CYAN + "C'nookin glabbnook'n rots and tots groes in da' potz!" + ANSI_RESET);
+					enter = userInput.nextLine();
+					System.out.println(ANSI_CYAN + "Crok. Crook. Cnook. Smelly dar" + ANSI_RED + " blood " + ANSI_CYAN +  "nicesty n'morni'n." + ANSI_RESET);
+					enter = userInput.nextLine();
+					System.out.println("He turns to you wide eyed and throws a chicken drumstick at you. He then walks away grumbling and disappears in the pantry.");
+					enter = userInput.nextLine();
+					System.out.println("You have no idea what happened but you hope it was good.");
 					enter = userInput.nextLine();
 					break;
-			case 7: System.out.println(ANSI_BLUE + "Honk Honk!" + ANSI_RESET);
-					enter = userInput.nextLine();
-					System.out.println("You get sprayed with water like a cat. The clown bounces bouncily away.");
+			case 6: System.out.println(ANSI_CYAN + "Do you have any medical needs? I'd be happy to help!" + ANSI_RESET);
 					enter = userInput.nextLine();
 					break;
-			case 8: shakespeare();
+			case 7: System.out.println(ANSI_CYAN + "Honk Honk!" + ANSI_RESET);
 					enter = userInput.nextLine();
-					System.out.println("They don't seem to be doing much work.");
+					System.out.println(ANSI_CYAN + "You get sprayed with water like a cat. The clown bounces bouncily away." + ANSI_RESET);
 					enter = userInput.nextLine();
 					break;
-			case 9: System.out.println();
+			case 8: System.out.println(shakespeare());
+					enter = userInput.nextLine();
+					System.out.println("She doesn't seem to be doing much work.");
+					enter = userInput.nextLine();
 					break;
-			case 10: System.out.println();
+			case 9: System.out.println(ANSI_CYAN + "Have you heard of FL v. Sheila Keen-Warren? The killer clown trial?");
+					enter = userInput.nextLine();
+					System.out.println("Well now you do! I HATE DEM DAMN CLOWNS! Whit dere fake flowas and enourmouse shoes!" + ANSI_RESET);
+					enter = userInput.nextLine();
+					System.out.println("You are surprised by her sudden deep Southern accent.");
+					enter = userInput.nextLine();
 					break;
-			case 11: System.out.println();
+			case 10: System.out.println(ANSI_CYAN + "Heeeeeeeey- wait your not the pretty Stewardess." + ANSI_RESET);
+					enter = userInput.nextLine();
+					System.out.println(ANSI_CYAN + "Go away! Shooo! My father told me not to talk to the poors. It might rub off on me." + ANSI_RESET);
+					enter = userInput.nextLine();
+					System.out.println(ANSI_CYAN + "Do you know who my father is?" + ANSI_RED + "Napolean Hill" + ANSI_RESET + ANSI_CYAN + ". Yeah thats right! So don't cause me any trouble \nor you won't hear the end of it from my lawyer!" + ANSI_RESET);
+					enter = userInput.nextLine();
+					System.out.println(ANSI_CYAN + "Where IS that Stewardess? I'm starved!" + ANSI_RESET);
+					enter = userInput.nextLine();
+					System.out.println("Leonard glances over his shoulder and scowls at the Stewardess-less train car. You suspect you might get on his good side if you find him some food.");
+					enter = userInput.nextLine();
 					break;
-			case 12: System.out.println();
+			case 11: System.out.println("The butler nods his head toward you and does a little bow while twitching his curly mustache.");
+					enter = userInput.nextLine();
+					System.out.println(ANSI_CYAN + "Good day Sir. " + ANSI_RESET);
+					enter = userInput.nextLine();
 					break;
-			case 13: System.out.println();
-					break;
-			case 14: System.out.println();
-					break;
-			case 15: System.out.println();
+			case 12: System.out.println(ANSI_CYAN + "Oh thank the Lord, someone finally found me. I have been alone in this void for far too long." + ANSI_RESET);
+					enter = userInput.nextLine();
+					System.out.println(ANSI_CYAN + "Clearly you know who I am..." + ANSI_RESET);
+					enter = userInput.nextLine();
+					System.out.println(ANSI_CYAN + "YOU DON'T?");
+					enter = userInput.nextLine();
+					System.out.println(ANSI_CYAN + "I'M GEORGE BLOODY WASHINGTON BRO!" + ANSI_RESET);
+					enter = userInput.nextLine();
+					System.out.println(ANSI_CYAN + "Anyways, I've been here for a hot minute soooooo. Thanks for freeing me, homeskillet." + ANSI_RESET);
 					break;
 			
 		}
@@ -878,16 +904,16 @@ public class Runner {
 			
 			switch(random)
 			{
-				case 0: shakespeare = "Is this a dagger which I see before me, the handle toward my hand?";
-						break;
-				case 1: shakespeare = "Cry “havoc!” and let slip the dogs of war";
-						break;
-				case 2: shakespeare = "Full fathom five thy father lies, of his bones are coral made. Those are pearls that were his eyes. \nNothing of him that doth fade, but doth suffer a sea-change into something rich and strange.";
-						break;
-				case 3: shakespeare = "A horse! a horse! my kingdom for a horse!";
-						break;
-				default: shakespeare = "If you prick us, do we not bleed? If you tickle us, do we not laugh? If you poison us, do we not die? And if you wrong us, shall we not revenge?";
-						break;
+			case 0: shakespeare = ANSI_CYAN + "Is this a dagger which I see before me, the handle toward my hand?" + ANSI_RESET;
+			break;
+			case 1: shakespeare = ANSI_CYAN + "Cry “havoc!” and let slip the dogs of war." + ANSI_RESET;
+					break;
+			case 2: shakespeare = ANSI_CYAN + "Full fathom five thy father lies, of his bones are coral made. Those are pearls that were his eyes. \nNothing of him that doth fade, but doth suffer a sea-change into something rich and strange." + ANSI_RESET;
+					break;
+			case 3: shakespeare = ANSI_CYAN + "A horse! a horse! My kingdom for a horse!" + ANSI_RESET;
+					break;
+			default: shakespeare = ANSI_CYAN + "If you prick us, do we not bleed? If you tickle us, do we not laugh? If you poison us, do we not die? And if you wrong us, shall we not revenge?" + ANSI_RESET;
+					break;
 			}
 			return shakespeare; 
 		}
@@ -954,8 +980,8 @@ public class Runner {
 		board.add(new Boxcar(RED + "Engine" + ANSI_RESET, 5, 0, "It is so hot in this room. It feels like there is a portal to the pits of hell here. But if you want to burn, I say do it!"));
 		
 		//Compartments
-		board.add(new Compartment(LBLUE + "Outside" + ANSI_RESET, 6, 0, true, "You step out onto the balcony at the end of the train. As the wind whistles past your ears you begin to feel uneasy, \nimagining that you might fall off and go for a tumble. Maybe you should head back inside."));
-		board.add(new Compartment(YELLOW + "???" + ANSI_RESET, 7, 0, false, "You are in a large white wall room with items from the Revolutionary War littered around it. You have no idea how there is room for \nthis room on the train but it doesn't seem to care how so you won't either."));
+		board.add(new Compartment(YELLOW + "???" + ANSI_RESET, 6, 0, false, "You are in a large white wall room with items from the Revolutionary War littered around it. You have no idea how there is room for \nthis room on the train but it doesn't seem to care how so you won't either."));
+		board.add(new Compartment(LBLUE + "Outside" + ANSI_RESET, 7, 0, true, "You step out onto the balcony at the end of the train. As the wind whistles past your ears you begin to feel uneasy, \nimagining that you might fall off and go for a tumble. Maybe you should head back inside."));
 		board.add(new Compartment(BLUE + "Bathroom" + ANSI_RESET, 8, 0, false, "It is a small bathroom with barely enough room for you to stretch out your arms. There is a single square of toilet paper on the roll. \nYou decide it's best to go later."));
 		board.add(new Compartment(RED + "Pantry" + ANSI_RESET, 9, 0, false, "The moment you step in the room your nose gets hit by the scent of a hundred spices. \nYou don't know how you know there are exactly a hundred spices, but they sure are strong!"));
 		board.add(new Compartment(GREEN + "Bam Bam's Room" + ANSI_RESET, 10, 0, false, "A lot of tomfoolery seems to have happened in this room. The floor seems to be on the ceiling and the ceiling seems to be on the floor. \nThere a a number of brightly colored bags on the floor."));

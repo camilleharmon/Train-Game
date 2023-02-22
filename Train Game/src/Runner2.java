@@ -69,52 +69,56 @@ public class Runner2 {
 		switch(index)
 		{
 			
-			case 1: System.out.println(ANSI_BLUE + "Choo Choooooooooooooooooo. I like twains." + ANSI_RESET);
+			case 1: System.out.println(ANSI_CYAN + "Choo Choooooooooooooooooo. I like twains." + ANSI_RESET);
 					enter = userInput.nextLine();
 					break;
-			case 2: System.out.println(ANSI_BLUE + "You seem like a rather amiable fellow. I'm glad for your presence on my humble little train. \nNothing secret here at all..." + ANSI_RESET);
+			case 2: System.out.println(ANSI_CYAN + "You seem like a rather amiable fellow. I'm glad for your presence on my humble little train. \nNothing secret here at all..." + ANSI_RESET);
 					enter = userInput.nextLine();
 					break;
-			case 3: System.out.println(ANSI_BLUE + "Do you know what it's like down here. All alone.");
+			case 3: System.out.println(ANSI_CYAN + "Do you know what it's like down here. All alone.");
 					enter = userInput.nextLine();
 					System.out.println("Only living for the ebb and flow of pulling the brake.");
 					enter = userInput.nextLine();
-					System.out.println(" I am trapped here for eternity. There is no one who loves me.");
+					System.out.println("I am trapped here for eternity. There is no one who loves me.");
 					enter = userInput.nextLine();
-					System.out.println("If only the bathroom was unlocked" + ANSI_RESET);
+					System.out.println("If only the bathroom was unlocked..." + ANSI_RESET);
 					break;
-			case 4: System.out.println(ANSI_BLUE + "Please you HAVE to get me away from Leonard. He really is a gross man-child" + ANSI_RESET);
-					enter = userInput.nextLine();
-					break;
-			case 5: System.out.println(ANSI_BLUE + "Cook. Cook. Cook. I do love the smell of" + ANSI_RED + " blood " + ANSI_BLUE +  "in the morning." + ANSI_RESET);
+			case 4: System.out.println(ANSI_CYAN + "Please you HAVE to get me away from Leonard. He really is a gross man-child" + ANSI_RESET);
 					enter = userInput.nextLine();
 					break;
-			case 6: System.out.println(ANSI_BLUE + "Do you have any medical needs? I'd be happy to help!" + ANSI_RESET);
+			case 5: System.out.println(ANSI_CYAN + "Cook. Cook. Cook. I do love the smell of" + ANSI_RED + " blood " + ANSI_CYAN +  "in the morning." + ANSI_RESET);
 					enter = userInput.nextLine();
 					break;
-			case 7: System.out.println(ANSI_BLUE + "Honk Honk!" + ANSI_RESET);
+			case 6: System.out.println(ANSI_CYAN + "Do you have any medical needs? I'd be happy to help!" + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 7: System.out.println(ANSI_CYAN + "Honk Honk!" + ANSI_RESET);
 					enter = userInput.nextLine();
 					System.out.println("You get sprayed with water like a cat. The clown bounces bouncily away.");
 					enter = userInput.nextLine();
 					break;
-			case 8: shakespeare();
+			case 8: System.out.println(shakespeare());
 					enter = userInput.nextLine();
 					System.out.println("She doesn't seem to be doing much work.");
 					enter = userInput.nextLine();
 					break;
-			case 9: System.out.println();
+			case 9: System.out.println(ANSI_CYAN + "Have you heard of FL v. Sheila Keen-Warren? The killer clown trial?");
+					enter = userInput.nextLine();
+					System.out.println("Well now you do! I HATE CLOWNS!" + ANSI_RESET);
 					break;
 			case 10: System.out.println();
 					break;
 			case 11: System.out.println();
 					break;
-			case 12: System.out.println();
-					break;
-			case 13: System.out.println();
-					break;
-			case 14: System.out.println();
-					break;
-			case 15: System.out.println();
+			case 12: System.out.println("Oh thank the Lord, someone finally found me. I have been alone in this void for far too long.");
+					enter = userInput.nextLine();
+					System.out.println("Clearly you know who I am...");
+					enter = userInput.nextLine();
+					System.out.println("YOU DON'T?");
+					enter = userInput.nextLine();
+					System.out.println("I'M GEORGE BLOODY WASHINGTON BRO!");
+					enter = userInput.nextLine();
+					System.out.println("Anyways, I've been here for a hot minute soooooo. Thanks for freeing me, homeskillet.");
 					break;
 			
 		}
@@ -127,15 +131,15 @@ public class Runner2 {
 			
 			switch(random)
 			{
-				case 0: shakespeare = "Is this a dagger which I see before me, the handle toward my hand?";
+				case 0: shakespeare = ANSI_CYAN + "Is this a dagger which I see before me, the handle toward my hand?" + ANSI_RESET;
 						break;
-				case 1: shakespeare = "Cry “havoc!” and let slip the dogs of war";
+				case 1: shakespeare = ANSI_CYAN + "Cry “havoc!” and let slip the dogs of war" + ANSI_RESET;
 						break;
-				case 2: shakespeare = "Full fathom five thy father lies, of his bones are coral made. Those are pearls that were his eyes. \nNothing of him that doth fade, but doth suffer a sea-change into something rich and strange.";
+				case 2: shakespeare = ANSI_CYAN + "Full fathom five thy father lies, of his bones are coral made. Those are pearls that were his eyes. \nNothing of him that doth fade, but doth suffer a sea-change into something rich and strange." + ANSI_RESET;
 						break;
-				case 3: shakespeare = "A horse! a horse! my kingdom for a horse!";
+				case 3: shakespeare = ANSI_CYAN + "A horse! a horse! My kingdom for a horse!" + ANSI_RESET;
 						break;
-				default: shakespeare = "If you prick us, do we not bleed? If you tickle us, do we not laugh? If you poison us, do we not die? And if you wrong us, shall we not revenge?";
+				default: shakespeare = ANSI_CYAN + "If you prick us, do we not bleed? If you tickle us, do we not laugh? If you poison us, do we not die? And if you wrong us, shall we not revenge?" + ANSI_RESET;
 						break;
 			}
 			return shakespeare; 

@@ -6,6 +6,7 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import java.util.*;
 
 public class Runner2 {
 
@@ -16,11 +17,6 @@ public class Runner2 {
 	static boolean game = true;
 
 	static Player player;
-	
-	//added player inventory
-	static ArrayList <MyObject> inventory = new ArrayList<MyObject>();
-	//
-	
 	static int cha = 0;
 	static Scanner userIntInput = new Scanner(System.in);
 	static Scanner userInput = new Scanner(System.in);
@@ -28,6 +24,8 @@ public class Runner2 {
 	
 	private static final long serialVersionUID = 1L;
 	static JFrame frame = new JFrame();
+	
+	static ArrayList <MyObject> inventory = new ArrayList<MyObject>();
 	
 //	int choice = 1;
 //	static String choice2 = "";
@@ -62,16 +60,579 @@ public class Runner2 {
 		fillCharacters();
 		fillObjects();
 		fillBoard();
-		//charDisplay(22);
-		makePlayer();
-		displayRoom();
 		intro();
+
+	}
+	
+	public static void charResponse(int index){
+		
+		switch(index)
+		{
+			
+			case 1: System.out.println(ANSI_BLUE + "Choo Choooooooooooooooooo. I like twains." + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 2: System.out.println(ANSI_BLUE + "You seem like a rather amiable fellow. I'm glad for your presence on my humble little train. \nNothing secret here at all..." + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 3: System.out.println(ANSI_BLUE + "Do you know what it's like down here. All alone.");
+					enter = userInput.nextLine();
+					System.out.println("Only living for the ebb and flow of pulling the brake.");
+					enter = userInput.nextLine();
+					System.out.println(" I am trapped here for eternity. There is no one who loves me.");
+					enter = userInput.nextLine();
+					System.out.println("If only the bathroom was unlocked" + ANSI_RESET);
+					break;
+			case 4: System.out.println(ANSI_BLUE + "Please you HAVE to get me away from Leonard. He really is a gross man-child" + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 5: System.out.println(ANSI_BLUE + "Cook. Cook. Cook. I do love the smell of" + ANSI_RED + " blood " + ANSI_BLUE +  "in the morning." + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 6: System.out.println(ANSI_BLUE + "Do you have any medical needs? I'd be happy to help!" + ANSI_RESET);
+					enter = userInput.nextLine();
+					break;
+			case 7: System.out.println(ANSI_BLUE + "Honk Honk!" + ANSI_RESET);
+					enter = userInput.nextLine();
+					System.out.println("You get sprayed with water like a cat. The clown bounces bouncily away.");
+					enter = userInput.nextLine();
+					break;
+			case 8: shakespeare();
+					enter = userInput.nextLine();
+					System.out.println("She doesn't seem to be doing much work.");
+					enter = userInput.nextLine();
+					break;
+			case 9: System.out.println();
+					break;
+			case 10: System.out.println();
+					break;
+			case 11: System.out.println();
+					break;
+			case 12: System.out.println();
+					break;
+			case 13: System.out.println();
+					break;
+			case 14: System.out.println();
+					break;
+			case 15: System.out.println();
+					break;
+			
+		}
+	}
+	
+	public static String shakespeare()
+		{
+			String shakespeare = "";
+			int random = (int)(Math.random()*4);
+			
+			switch(random)
+			{
+				case 0: shakespeare = "Is this a dagger which I see before me, the handle toward my hand?";
+						break;
+				case 1: shakespeare = "Cry “havoc!” and let slip the dogs of war";
+						break;
+				case 2: shakespeare = "Full fathom five thy father lies, of his bones are coral made. Those are pearls that were his eyes. \nNothing of him that doth fade, but doth suffer a sea-change into something rich and strange.";
+						break;
+				case 3: shakespeare = "A horse! a horse! my kingdom for a horse!";
+						break;
+				default: shakespeare = "If you prick us, do we not bleed? If you tickle us, do we not laugh? If you poison us, do we not die? And if you wrong us, shall we not revenge?";
+						break;
+			}
+			return shakespeare; 
+		}
+	
+	public static void mainCar(){
+		
+		player.setLocation(3);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(2).getName());
+		System.out.println("2) " + board.get(4).getName());
+		System.out.println("3) " + board.get(10).getName());
+		System.out.println("4) " + board.get(11).getName());
+		System.out.println("5) " + board.get(12).getName());
+		System.out.println("6) " + board.get(13).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					kitchen();
+					break;
+				}
+		case 2:
+				{
+					
+					firstClass();
+					break;
+				}
+		case 3:
+				{
+					if(board.get(10).isUnlocked()) {
+						
+						clownRoom();
+					}else {
+						
+						mainCar();
+					}
+					break;
+				}
+		case 4:
+				{
+					myRoom();
+					break;
+				}
+		case 5:
+				{
+					if(board.get(10).isUnlocked()) {
+						
+						writerRoom();
+					}else {
+						
+						mainCar();
+					}
+					break;
+				}
+		case 6:
+				{
+					if(board.get(10).isUnlocked()) {
+						
+						prosecRoom();
+					}else {
+						
+						mainCar();
+					}
+					break;
+				}
+		default:
+				{
+					mainCar();
+				}
+		}	
+	}
+	
+	
+	public static void clownRoom() {
+		
+		player.setLocation(10);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(3).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					mainCar();
+					break;
+				}
+		default:
+				{
+					clownRoom();
+				}
+		}	
+	}
+	
+	public static void myRoom() {
+		
+		player.setLocation(11);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(3).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					mainCar();
+					break;
+				}
+		default:
+				{
+					myRoom();
+				}
+		}	
+	}
+	
+	public static void writerRoom() {
+		
+		player.setLocation(12);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(3).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					mainCar();
+					break;
+				}
+		default:
+				{
+					writerRoom();
+				}
+		}	
+	}
+	
+	public static void prosecRoom() {
+		
+		player.setLocation(13);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(3).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					mainCar();
+					break;
+				}
+		default:
+				{
+					prosecRoom();
+				}
+		}	
+	}
+	
+	public static void kitchen() {
+		
+		player.setLocation(2);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(1).getName());
+		System.out.println("2) " + board.get(3).getName());
+		System.out.println("3) " + board.get(8).getName());
+		System.out.println("4) " + board.get(9).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					caboose();
+					break;
+				}
+		case 2:
+				{
+					mainCar();
+					break;
+				}
+		case 3:
+				{
+					if(board.get(14).isUnlocked()) {
+						
+						bathroom();
+					}else {
+						
+						kitchen();
+					}
+					break;
+				}
+		case 4:
+				{
+					if(board.get(15).isUnlocked()) {
+						
+						pantry();
+					}else {
+						
+						kitchen();
+					}
+					break;
+				}
+		default:
+				{
+					kitchen();
+				}
+		}	
+	}
+	
+	public static void bathroom() {
+		
+		player.setLocation(8);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(2).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					kitchen();
+					break;
+				}
+		default:
+				{
+					bathroom();
+				}
+		}	
+	}
+	
+	public static void pantry() {
+		
+		player.setLocation(9);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(2).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					kitchen();
+					break;
+				}
+		default:
+				{
+					pantry();
+				}
+		}	
+	}
+	
+	public static void caboose() {
+		
+		player.setLocation(1);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(2).getName());
+		System.out.println("2) " + board.get(7).getName());
+		System.out.println("3) " + board.get(6).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					kitchen();
+					break;
+				}
+		case 2:
+				{
+					outside();
+					break;
+				}
+		case 3:
+				{
+					if(board.get(6).isUnlocked()) {
+						
+						mystery();
+					}else {
+						
+						caboose();
+					}
+					break;
+				}
+		default:
+				{
+					caboose();
+				}
+		}	
+	}
+	
+	public static void outside() {
+		
+		player.setLocation(7);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(1).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					caboose();
+					break;
+				}
+		default:
+				{
+					outside();
+				}
+		}	
+	}
+	
+	public static void mystery() {
+		
+		player.setLocation(6);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(1).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					caboose();
+					break;
+				}
+		default:
+				{
+					mystery();
+				}
+		}	
+	}
+	
+	public static void firstClass() {
+		
+		player.setLocation(4);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(3).getName());
+		System.out.println("2) " + board.get(5).getName());
+		System.out.println("3) " + board.get(14).getName());
+		System.out.println("4) " + board.get(15).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					mainCar();
+					break;
+				}
+		case 2:
+				{
+					engine();
+					break;
+				}
+		case 3:
+				{
+					if(board.get(14).isUnlocked()) {
+						
+						leoRoom();
+					}else {
+						
+						firstClass();
+					}
+					break;
+				}
+		case 4:
+				{
+					if(board.get(15).isUnlocked()) {
+						
+						docRoom();
+					}else {
+						
+						firstClass();
+					}
+					break;
+				}
+		default:
+				{
+					firstClass();
+				}
+		}	
+	}
+	
+	public static void leoRoom() {
+		
+		player.setLocation(14);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(4).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					firstClass();
+					break;
+				}
+		default:
+				{
+					leoRoom();
+				}
+		}	
 	}
 
-	//finished entire intro
+	public static void docRoom() {
+		
+		player.setLocation(15);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(4).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					firstClass();
+					break;
+				}
+		default:
+				{
+					docRoom();
+				}
+		}	
+	}
+	
+	public static void engine() {
+		
+		player.setLocation(5);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(4).getName());
+		System.out.println("2) " + board.get(16).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					firstClass();
+					break;
+				}
+		case 2:
+				{
+					driveCompart();
+					break;
+				}
+		default:
+				{
+					engine();
+				}
+		}	
+	}
+	
+	public static void driveCompart() {
+		
+		player.setLocation(16);
+		displayRoom();
+		System.out.println("What would you like to do?");
+		System.out.println("1) " + board.get(5).getName());
+		int choice = userIntInput.nextInt();
+		
+		switch(choice)
+		{
+		case 1:
+				{
+					engine();
+					break;
+				}
+		default:
+				{
+					driveCompart();
+				}
+		}	
+	}
+	
 	public static void intro() {
 		
 		charDisplay(0);
+		makePlayer();
+		player.setLocation(0);
+		displayRoom();
 		System.out.println(ANSI_CYAN + "Welcome to the waiting room! I hope you will enjoy your ride upon our humble little train.");
 		enter = userInput.nextLine();
 		System.out.println("You are welcome to look around, lots of interesting characters on the ride today." + ANSI_RESET);
@@ -151,149 +712,9 @@ public class Runner2 {
 		board.get(0).setName("Do you really want to jump out of a window bro? Really?");
 		
 		System.out.println("---------------------------------------");
-		displayRoom();
+		mainCar();
 	}
 	
-	public static void mainCar(){
-		
-		displayRoom();
-		System.out.println("What would you like to do?");
-		System.out.println("1) Right Door");
-		System.out.println("2) Left Door");
-		System.out.println("3) " +  board.get(10).getName());
-		System.out.println("4) " +  board.get(11).getName());
-		System.out.println("5) " +  board.get(12).getName());
-		System.out.println("6) " +  board.get(13).getName());
-		int choice = userIntInput.nextInt();
-		
-		switch(choice)
-		{
-		case 2:
-				{
-					kitchen();
-					break;
-				}
-		case 3:
-				{
-					if(board.get(10).isUnlocked()) {
-						
-						clownRoom();
-					}else {
-						
-						mainCar();
-					}
-					break;
-				}
-		case 4:
-				{
-					myRoom();
-					break;
-				}
-		case 5:
-				{
-					if(board.get(10).isUnlocked()) {
-						
-						clownRoom();
-					}else {
-						
-						mainCar();
-					}
-					break;
-				}
-		case 6:
-				{
-					if(board.get(10).isUnlocked()) {
-						
-						clownRoom();
-					}else {
-						
-						mainCar();
-					}
-					break;
-				}
-		default:
-				{
-					firstClass();
-				}
-		}	
-	}
-	
-	public static void charResponse(int index){
-		
-		switch(index)
-		{
-			
-			case 1: System.out.println(ANSI_BLUE + "Choo Choooooooooooooooooo. I like twains." + ANSI_RESET);
-					enter = userInput.nextLine();
-					break;
-			case 2: System.out.println(ANSI_BLUE + "You seem like a rather amiable fellow. I'm glad for your presence on my humble little train. \nNothing secret here at all..." + ANSI_RESET);
-					enter = userInput.nextLine();
-					break;
-			case 3: System.out.println(ANSI_BLUE + "Do you know what it's like down here. All alone.");
-					enter = userInput.nextLine();
-					System.out.println("Only living for the ebb and flow of pulling the brake.");
-					enter = userInput.nextLine();
-					System.out.println(" I am trapped here for eternity. There is no one who loves me.");
-					enter = userInput.nextLine();
-					System.out.println("If only the bathroom was unlocked" + ANSI_RESET);
-					break;
-			case 4: System.out.println(ANSI_BLUE + "Please you HAVE to get me away from Leonard. He really is a gross man-child" + ANSI_RESET);
-					enter = userInput.nextLine();
-					break;
-			case 5: System.out.println(ANSI_BLUE + "Cook. Cook. Cook. I do love the smell of" + ANSI_RED + " blood " + ANSI_BLUE +  "in the morning." + ANSI_RESET);
-					enter = userInput.nextLine();
-					break;
-			case 6: System.out.println(ANSI_BLUE + "Do you have any medical needs? I'd be happy to help!" + ANSI_RESET);
-					enter = userInput.nextLine();
-					break;
-			case 7: System.out.println(ANSI_BLUE + "Honk Honk!" + ANSI_RESET);
-					enter = userInput.nextLine();
-					System.out.println("You get sprayed with water like a cat. The clown bounces bouncily away.");
-					enter = userInput.nextLine();
-					break;
-			case 8: shakespeare();
-					enter = userInput.nextLine();
-					System.out.println("They don't seem to be doing much work.");
-					enter = userInput.nextLine();
-					break;
-			case 9: System.out.println();
-					break;
-			case 10: System.out.println();
-					break;
-			case 11: System.out.println();
-					break;
-			case 12: System.out.println();
-					break;
-			case 13: System.out.println();
-					break;
-			case 14: System.out.println();
-					break;
-			case 15: System.out.println();
-					break;
-			
-		}
-	}
-	
-	public static String shakespeare()
-		{
-			String shakespeare = "";
-			int random = (int)(Math.random()*4);
-			
-			switch(random)
-			{
-				case 0: shakespeare = "Is this a dagger which I see before me, the handle toward my hand?";
-						break;
-				case 1: shakespeare = "Cry “havoc!” and let slip the dogs of war";
-						break;
-				case 2: shakespeare = "Full fathom five thy father lies, of his bones are coral made. Those are pearls that were his eyes. \nNothing of him that doth fade, but doth suffer a sea-change into something rich and strange.";
-						break;
-				case 3: shakespeare = "A horse! a horse! my kingdom for a horse!";
-						break;
-				default: shakespeare = "If you prick us, do we not bleed? If you tickle us, do we not laugh? If you poison us, do we not die? And if you wrong us, shall we not revenge?";
-						break;
-			}
-			return shakespeare; 
-		}
 	public static void displayRoom() {
 
 //		Object[] options = {"Left Door", "Right Door", "Room 1", "My Room", "Room 3", "Room 4"};
@@ -306,11 +727,13 @@ public class Runner2 {
 //				null, 
 //				options, 
 //				options);
-		
-	    System.out.println("You are in: " + board.get(player.getLocation()).getName());
-	    System.out.println("It is day " + board.get(player.getLocation()).getDay());
+		System.out.println("");
+		System.out.println("_______________________________________");
+		System.out.println("");
+	    System.out.println(BOLD + "You are in: " + ANSI_RESET + board.get(player.getLocation()).getName());
+	    System.out.println(BOLD + "It is day " + ANSI_RESET + board.get(player.getLocation()).getDay());
 	    System.out.println(board.get(player.getLocation()).getDescription());
-	    System.out.println("People in the room:");
+	    System.out.println(BOLD + "People in the room:" + ANSI_RESET);
 
 //	    for(Character c : characterList){
 //	        if(c.getLocation() == player.getLocation()) {
@@ -442,10 +865,7 @@ public class Runner2 {
 	public static void fillCharacters() {
 		
 		//Crew
-		
-		//fixed clerk spelling
-		characterList.add(new Character(ANSI_CYAN + "Ticket Clerk" + ANSI_RESET, "Unknown", 0, 0));
-		//
+		characterList.add(new Character(ANSI_CYAN + "Ticket CLerk" + ANSI_RESET, "Unknown", 0, 0));
 		characterList.add(new Character(ANSI_CYAN + "Engineer" + ANSI_RESET, "Unknown", 16, 0));
 		characterList.add(new Character(ANSI_CYAN + "Conductor" + ANSI_RESET, "Unknown", 3, 0));
 		characterList.add(new Character(ANSI_CYAN + "Brakeman" + ANSI_RESET, "Unknown", 5, 0));
@@ -518,27 +938,26 @@ public class Runner2 {
 		System.out.println("");
 		
 		//Boxcars
-		board.add(new Boxcar("Intro", 0, 0, "You are in an incomprehensible void while waiting for the train. The appearence of the room is constantly changing. You may be able to talk to people and collect objects while waiting for the train's harrowing call."));
-		board.add(new Boxcar("Caboose", 1, 0, "You are in the back of the train. There is not much to see here, but there may be secrets to unlock."));
-		board.add(new Boxcar("Kitchen", 2, 0, "You are in the kitchen. You smell the wonderful smell of carmalizing carrots, but what else could lie under the spices?"));
-		board.add(new Boxcar("Main", 3, 0, "Everyone gathers in the main room for conversations, but what could you access from here?"));
-		board.add(new Boxcar("First Class", 4, 0, "Do you really want to sit with snobs like these? Here sit people who pay money to simply sit on nicer fabric. \nBut money brings allies so do with them what you will."));
-		board.add(new Boxcar("Engine", 5, 0, "It is so hot in this room. It feels like there is a portal to the pits of hell here. But if you want to burn, I say do it!"));
+		board.add(new Boxcar(BLUE + "Intro" + ANSI_RESET, 0, 0, "You are in an incomprehensible void while waiting for the train. The appearence of the room is constantly changing. You may be able to talk to people and collect objects while waiting for the train's harrowing call."));
+		board.add(new Boxcar(PINK + "Caboose" + ANSI_RESET, 1, 0, "You are in the back of the train. There is not much to see here, but there may be secrets to unlock."));
+		board.add(new Boxcar(ORANGE + "Kitchen" + ANSI_RESET, 2, 0, "You are in the kitchen. You smell the wonderful smell of carmalizing carrots, but what else could lie under the spices?"));
+		board.add(new Boxcar(GREEN + "Main" + ANSI_RESET, 3, 0, "Everyone gathers in the main room for conversations, but what could you access from her?"));
+		board.add(new Boxcar(YELLOW + "First Class" + ANSI_RESET, 4, 0, "Do you really want to sit with snobs like these? Here sit people who pay money to simply sit on nicer fabric. \nBut money brings allies so do with them what you will."));
+		board.add(new Boxcar(RED + "Engine" + ANSI_RESET, 5, 0, "It is so hot in this room. It feels like there is a portal to the pits of hell here. But if you want to burn, I say do it!"));
 		
 		//Compartments
+		board.add(new Compartment(YELLOW + "???" + ANSI_RESET, 6, 0, false, "You are in a large white wall room with items from the Revolutionary War littered around it. You have no idea how there is room for \nthis room on the train but it doesn't seem to care how so you won't either."));
+		board.add(new Compartment(LBLUE + "Outside" + ANSI_RESET, 7, 0, true, "You step out onto the balcony at the end of the train. As the wind whistles past your ears you begin to feel uneasy, \nimagining that you might fall off and go for a tumble. Maybe you should head back inside."));
+		board.add(new Compartment(BLUE + "Bathroom" + ANSI_RESET, 8, 0, false, "It is a small bathroom with barely enough room for you to stretch out your arms. There is a single square of toilet paper on the roll. \nYou decide it's best to go later."));
+		board.add(new Compartment(RED + "Pantry" + ANSI_RESET, 9, 0, false, "The moment you step in the room your nose gets hit by the scent of a hundred spices. \nYou don't know how you know there are exactly a hundred spices, but they sure are strong!"));
+		board.add(new Compartment(GREEN + "Bam Bam's Room" + ANSI_RESET, 10, 0, false, "A lot of tomfoolery seems to have happened in this room. The floor seems to be on the ceiling and the ceiling seems to be on the floor. \nThere a a number of brightly colored bags on the floor."));
+		board.add(new Compartment(PINK + "My Room" + ANSI_RESET, 11, 0, true, "Your room is small but clean. The bed looks cozy, the suitcase is neat, and the mice in the wall are comfortable. Wait, there's mice-?!"));
+		board.add(new Compartment(BLUE + "Harper Greene's Room" + ANSI_RESET, 12, 0, false, "This room is cozy and warm. It makes you want to curl up with a book and read."));
+		board.add(new Compartment(RED + "Rosalind Francis' Room" + ANSI_RESET, 13, 0, false, "This room is just as small as the others, case files litter the floor and a big poster of a clown wih a red 'X' is taped to the wall."));
+		board.add(new Compartment(ORANGE + "The Room of Leonard Hill (and Horace, but he doesnt matter)" + ANSI_RESET, 14, 0, false, "This room appears to be made of marble, which doesn't surprise you since this is Leonard's Room... and Horace's too I guess. \nA number a stuffed animals make a pile in the corner."));
+		board.add(new Compartment(GREEN + "Valentine Booth's Room" + ANSI_RESET, 15, 0, false, "Why did the matress go to the doctor? It had spring fever. No, but seriously, this is the bounciest bed I've ever seen."));
 		
-		board.add(new Compartment("???", 6, 0, false, "You are in a large white wall room with items from the Revolutionary War littered around it. You have no idea how there is room for \nthis room on the train but it doesn't seem to care how so you won't either."));
-		board.add(new Compartment("Outside", 7, 0, true, "You step out onto the balcony at the end of the train. As the wind whistles past your ears you begin to feel uneasy, \nimagining that you might fall off and go for a tumble. Maybe you should head back inside."));
-		board.add(new Compartment("Bathroom", 8, 0, false, "It is a small bathroom with barely enough room for you to stretch out your arms. There is a single square of toilet paper on the roll. \nYou decide it's best to go later."));
-		board.add(new Compartment("Pantry", 9, 0, false, "The moment you step in the room your nose gets hit by the scent of a hundred spices. \nYou don't know how you know there are exactly a hundred spices, but they sure are strong!"));
-		board.add(new Compartment("Bam Bam's Room", 10, 0, false, "A lot of tomfoolery seems to have happened in this room. The floor seems to be on the ceiling and the ceiling seems to be on the floor. \nThere a a number of brightly colored bags on the floor."));
-		board.add(new Compartment("My Room", 11, 0, true, "Your room is small but clean. The bed looks cozy, the suitcase is neat, and the mice in the wall are comfortable. Wait, there's mice-?!"));
-		board.add(new Compartment("Harper Greene's Room", 12, 0, false, "This room is cozy and warm. It makes you want to curl up with a book and read."));
-		board.add(new Compartment("Rosalind Francis' Room", 13, 0, false, "This room is just as small as the others, case files litter the floor and a big poster of a clown wih a red 'X' is taped to the wall."));
-		board.add(new Compartment("The Room of Leonard Hill (and Horace, but he doesnt matter)", 14, 0, false, "This room appears to be made of marble, which doesn't surprise you since this is Leonard's Room... and Horace's too I guess. \nA number a stuffed animals make a pile in the corner."));
-		board.add(new Compartment("Valentine Booth's Room", 15, 0, false, "Why did the matress go to the doctor? It had spring fever. No, but seriously, this is the bounciest bed I've ever seen."));
-		
-		board.add(new Boxcar("The Driving Compartment", 16, 0, "Do you want to make the sound? Come on pull the lever. Make the train whistle. Nothing else to do here."));
+		board.add(new Boxcar(LBLUE + "The Driving Compartment" + ANSI_RESET, 16, 0, "Do you want to make the sound? Come on pull the lever. Make the train whistle. Nothing else to do here."));
 		
 		try {
 			Thread.sleep(200);

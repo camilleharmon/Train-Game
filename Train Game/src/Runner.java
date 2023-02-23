@@ -60,8 +60,8 @@ public class Runner {
 		fillCharacters();
 		fillObjects();
 		fillBoard();
-		charResponse(12);
-		//intro();
+		//charResponse(12);
+		intro();
 		
 	}
 	
@@ -906,7 +906,7 @@ public class Runner {
 			{
 			case 0: shakespeare = ANSI_CYAN + "Is this a dagger which I see before me, the handle toward my hand?" + ANSI_RESET;
 			break;
-			case 1: shakespeare = ANSI_CYAN + "Cry “havoc!” and let slip the dogs of war." + ANSI_RESET;
+			case 1: shakespeare = ANSI_CYAN + "Cry ï¿½havoc!ï¿½ and let slip the dogs of war." + ANSI_RESET;
 					break;
 			case 2: shakespeare = ANSI_CYAN + "Full fathom five thy father lies, of his bones are coral made. Those are pearls that were his eyes. \nNothing of him that doth fade, but doth suffer a sea-change into something rich and strange." + ANSI_RESET;
 					break;
